@@ -32,6 +32,7 @@ def clean_dist():
     DIST.mkdir(parents=True)
     (DIST / "assets" / "css").mkdir(parents=True)
     (DIST / "assets" / "js").mkdir(parents=True)
+    shutil.copy2(ROOT / "CNAME", DIST / "CNAME")
 
 def load_data():
     with open(CONTENT / "data.json", "r", encoding="utf-8") as f:
