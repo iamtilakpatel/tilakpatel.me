@@ -1,0 +1,115 @@
+{% extends "base.html" %} {% block title %}Projects — {{ meta.author }}{%
+endblock %} {% block body_page %}projects{% endblock %} {% block content %}
+<header class="page-header">
+  <div class="container">
+    <h1>{{ projects.page_title }}</h1>
+    <p class="subtitle">{{ projects.page_subtitle }}</p>
+  </div>
+</header>
+
+{% set aero = projects.aero_lite %}
+<section class="section" id="aero-lite">
+  <div class="container">
+    <div class="project-tag">{{ aero.tag }}</div>
+    <h2>{{ aero.title }}</h2>
+    <p class="project-subtitle">{{ aero.subtitle }}</p>
+    <div class="project-stats">
+      {% for s in aero.stats %}
+      <div class="p-stat">
+        <span class="p-num">{{ s.num }}</span>
+        <span class="p-label">{{ s.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ aero.problem_title }}</h2>
+    <div class="problem-grid">
+      {% for card in aero.problem_cards %}
+      <div class="problem-card {% if card.win %}solution{% endif %}">
+        <h4>{{ card.title }}</h4>
+        {% for line in card.lines %}
+        <p>{{ line }}</p>
+        {% endfor %} {% if card.fatal %}
+        <p class="problem-fatal">{{ card.fatal }}</p>
+        {% endif %} {% if card.win %}
+        <p class="solution-win">{{ card.win }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ aero.how_title }}</h2>
+    <div class="stages">
+      {% for stage in aero.stages %}
+      <div class="stage">
+        <div class="stage-num">{{ stage.num }}</div>
+        <h4>{{ stage.title }}</h4>
+        <p>{{ stage.text }}</p>
+      </div>
+      {% if not loop.last %}
+      <div class="stage-arrow">→</div>
+      {% endif %} {% endfor %}
+    </div>
+    <div class="cycle-note">{{ aero.cycle_note }}</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ aero.prototype_title }}</h2>
+    {% if aero.prototype_image %}
+    <div class="prototype-image-wrap">
+      <img
+        src="{{ aero.prototype_image }}"
+        alt="{{ aero.prototype_image_alt }}"
+        class="prototype-image"
+      />
+      <p class="prototype-caption">{{ aero.prototype_image_alt }}</p>
+    </div>
+    {% endif %}
+    <div class="prototype-content">
+      <p>{{ aero.prototype_text }}</p>
+      <ul>
+        {% for bullet in aero.prototype_bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
+      </ul>
+      <p class="prototype-data">{{ aero.prototype_data }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ aero.learnings_title }}</h2>
+    <div class="learnings">
+      {% for l in aero.learnings %}
+      <div class="learning">
+        <h4>{{ l.title }}</h4>
+        <p>{{ l.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ aero.repo_title }}</h2>
+    <p class="repo-text">{{ aero.repo_text }}</p>
+    <div class="center">
+      <a href="{{ aero.repo_url }}" class="btn btn-primary btn-large"
+        >{{ aero.repo_label }}</a
+      >
+    </div>
+  </div>
+</section>
+{% endblock %}

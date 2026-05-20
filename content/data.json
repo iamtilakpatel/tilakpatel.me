@@ -1,0 +1,355 @@
+{
+  "meta": {
+    "author": "Tilak Patel",
+    "grade": "8th Grade, Thompson Middle School",
+    "next": "Incoming Freshman, St. Charles North High School",
+    "year": 2026,
+    "pathway": "Aerospace & Robotics Engineering",
+    "repo": "https://github.com/iamtilakpatel/aero-lite",
+    "email": "iamtilakpatel@gmail.com"
+  },
+  "nav": {
+    "brand": "TILAK.DEV",
+    "links": [
+      {
+        "label": "Home",
+        "url": "index.html"
+      },
+      {
+        "label": "My Journey",
+        "url": "about.html"
+      },
+      {
+        "label": "Projects",
+        "url": "projects.html"
+      },
+      {
+        "label": "Blog",
+        "url": "blog.html"
+      }
+    ]
+  },
+  "footer": {
+    "line1": "Built by a kid who would not quit.",
+    "line2": "© Tilak Patel, 2026. 8th Grade → St. Charles North High School.",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/iamtilakpatel/aero-lite"
+      },
+      {
+        "label": "Email",
+        "url": "mailto:iamtilakpatel@gmail.com"
+      }
+    ]
+  },
+  "home": {
+    "label": "",
+    "title": "Hi, I'm Tilak.",
+    "subtitle": "I am a teenager who would rather take something apart than read the manual. I believe engineering is not about getting it right the first time — it is about building publicly, failing visibly, and documenting every wrong turn so the next person does not have to start from zero. This site is that documentation.",
+    "buttons": [
+      {
+        "label": "See My Projects",
+        "url": "projects.html",
+        "style": "primary"
+      },
+      {
+        "label": "Read My Story",
+        "url": "about.html",
+        "style": "secondary"
+      }
+    ],
+    "projects_section_title": "What I Am Working On",
+    "projects": [
+      {
+        "tag": "NASA Challenge",
+        "tag_color": "red",
+        "title": "AERO-LITE",
+        "description": "A regenerative CO₂ preprocessor for lunar habitats. I started this in mid-March 2026 after an email from the STEM Innovation Team at Space Center Houston. Three months later I had a working prototype with live sensors and a web dashboard.",
+        "link": "projects.html#aero-lite",
+        "link_text": "Read the build log →"
+      },
+      {
+        "tag": "Embedded",
+        "tag_color": "blue",
+        "title": "ESP32 Vision Arm",
+        "description": "AI-driven robotic arm using Seeed Studio Grove Vision AI. C++ firmware with web-based servo control. On hold while I finish AERO-LITE, but coming back this summer.",
+        "link": "",
+        "link_text": "Build log coming soon"
+      }
+    ],
+    "blog_section_title": "Latest from the Blog",
+    "blog_intro": "I write about what breaks, what fixes it, and what I wish someone told me before I started.",
+    "roadmap_section_title": "The Road Ahead",
+    "roadmap": [
+      {
+        "label": "8th Grade",
+        "status": "done",
+        "text": "Built AERO-LITE Phase 1. Learned KiCad. Debugged I²C at 2 AM. Asked AI for help when I was stuck."
+      },
+      {
+        "label": "Summer 2026",
+        "status": "current",
+        "text": "Thermal validation for AERO-LITE. Start high school course planning. Maybe build a second robot."
+      },
+      {
+        "label": "9th Grade",
+        "status": "future",
+        "text": "PLTW Principles of Engineering. Algebra 2 Honors. First high school robotics build. Keep documenting."
+      },
+      {
+        "label": "10th–12th",
+        "status": "future",
+        "text": "Aerospace Engineering pathway. AP Physics C. UIUC dual-credit Calc 3. More hardware. More failures. More learning."
+      }
+    ]
+  },
+  "about": {
+    "page_title": "My Journey",
+    "page_subtitle": "From blinking an LED to building lunar hardware. The honest version, including the parts where I cried.",
+    "intro": "I am not a genius. I am just someone who gets obsessed with problems and refuses to quit until something moves, blinks, or beeps. This page is the long version of how I got from zero to building AERO-LITE in 8th grade. I am writing it for three people: future me, who will need to remember how I thought at fourteen; any middle schooler who believes they are too young to build real things; and anyone evaluating whether my curiosity matches my persistence. The failures are here too. They matter more than the wins.",
+    "timeline": [
+      {
+        "year": "2021–2023",
+        "grade": "4th–5th Grade",
+        "title": "Gears Before Code",
+        "paragraphs": [
+          "4th grade was the peak of the pandemic. School was remote, the house was quiet, and I had hours to myself. I started building LEGO and off-brand mechanical sets — the ones with power motors, gearboxes, and pneumatic functions. I did not just follow the instructions. I took the pieces apart and rebuilt them into things that moved.",
+          "My first real creation was a mechanical arm built from those bulging, chunky blocks. It had a claw that opened and closed, an elbow that bent, and a base that rotated. It was crude, but it was mine. That arm taught me something I still believe: boring pieces become meaningful when you make them move. Every static brick was just a motor away from being alive.",
+          "5th grade was hybrid — some days in school, some days at home. I kept building. Cranes, cars, walking machines. Each failure — a gear that slipped, a motor that stalled — made me redesign instead of quit. By the end of 5th grade, I was outgrowing plastic bricks. I wanted to control movement with code, not just gears. That hunger is what led me to ask my dad for an Arduino Starter Kit in 6th grade."
+        ],
+        "sections": []
+      },
+      {
+        "year": "2023–2024",
+        "grade": "6th Grade",
+        "title": "The Spark",
+        "paragraphs": [
+          "In 6th grade, my dad bought me an Arduino Starter Kit as my birthday gift. I made an LED blink. Then I made it blink faster. Then I made it respond to a button. I did not understand Ohm's Law yet, but I understood that I could make electronics do what I wanted. That feeling never left.",
+          "I spent that year copying projects from YouTube and Arduino examples tutorials. Most of them did not work on the first try. I learned that code does not care how frustrated you are — it only cares if you typed the semicolon."
+        ],
+        "sections": []
+      },
+      {
+        "year": "2024–2025",
+        "grade": "7th Grade",
+        "title": "Leveling Up",
+        "paragraphs": [
+          "7th grade started with an Arduino car my dad bought me. It was a simple kit — two motors, a chassis, and a handful of sensors. I wrote small programs to make it follow a line, stop before hitting walls with an ultrasound sensor, and navigate around obstacles. None of it was fancy, but it was the first time I made something drive itself. Those small programs were my foundation: if-statements, sensor thresholds, motor timing. I started to see that code could control the physical world, not just blink an LED.",
+          "7th grade was also when I stopped copying and started building my own stuff. I got an ESP32 and realized it had WiFi. That changed everything. I built a web interface to control servos from my phone. It was ugly, but it worked.",
+          "I also started volunteering at BAPS, my community organization. I did not know it then, but standing in front of people at temple events and speaking would later help me pitch AERO-LITE to judges without shaking.",
+          "My first real struggle: I tried to design a PCB in some random software and gave up after 3 hours. The traces looked like spaghetti. I told myself I would come back to it.",
+          "By the end of 7th grade, my dad and I agreed I was ready for something serious. I signed up for PLTW: Introduction to Engineering — a high school honors course — for 8th grade. I wanted to learn engineering the right way, with structure, before I built anything bigger."
+        ],
+        "sections": []
+      },
+      {
+        "year": "2025–2026",
+        "grade": "8th Grade",
+        "title": "The Year Everything Changed",
+        "highlight": true,
+        "paragraphs": [
+          "8th grade started with a simple question: What if I actually tried to solve a real problem?"
+        ],
+        "sections": [
+          {
+            "heading": "September: The ESP32",
+            "text": "In September, I learned about the ESP32 — a tiny yet powerful microcontroller that is more than Arduino. I started exploring it, rerunning my Arduino examples through the ESP32. I broke at least three ESP32 boards by overheating and power mismanagement before I learned how to control power input to sensitive chips. Each dead board taught me something: read the voltage regulator datasheet, check your rail voltages, and never assume 5V and 3.3V are close enough. By October, I could wire an ESP32 without checking the pinout four times. That confidence mattered later when I had three sensors and a multiplexer to manage."
+          },
+          {
+            "heading": "January: The Decision",
+            "text": "I decided to pursue Aerospace Engineering as my career choice. It was not a sudden moment — it was the accumulation of every mechanical arm, every Arduino car, every ESP32 I fried. I looked at my transcript and selected the most rigorous courses available in freshman year to challenge and prepare myself for the hard path ahead: PLTW Principles of Engineering, Algebra 2 Honors, and everything else I could fit. I wanted to earn the difficulty, not avoid it."
+          },
+          {
+            "heading": "March: The Email",
+            "text": "Mid-March 2026. I got an email from the STEM Innovation Team at Space Center Houston. They were running the NASA Carbon Capture Challenge for middle and high school students. I almost deleted it because I thought it was for older kids. Then I read it again and realized it said 'grades 6–12.' I am in 8th grade. That means I qualify. I signed up."
+          },
+          {
+            "heading": "March–April: The Research",
+            "text": "I started reading about Artemis and the Moon. I kept seeing the same problem: astronauts need to breathe, and CO₂ builds up. The ISS vents it into space. The Moon does not have an 'into space.' I started calculating LiOH canister mass and realized the math was absurd. 1,440 canisters for a 180-day mission? Over 6,000 pounds of dead mass? That cannot be the future. I learned about zeolite 13X, silica gel, and the Sabatier reactor. I did not understand half the chemistry at first. I read papers, watched lectures, and asked my science teacher Ms. Cluster questions until she probably got tired of me. I also asked AI — ChatGPT, Claude, and every search engine I could find — to explain things I did not get. Slowly, the pieces fit."
+          },
+          {
+            "heading": "April: First Prototype",
+            "text": "I bought three mason jars, some tubing, and zeolite beads. I wired up an ESP32-S3 with three SCD41 CO₂ sensors and a TCA9548A multiplexer. The first time I ran it, nothing worked. The sensors would not show up on the I²C scanner. I spent three days debugging. Checked wiring. Checked addresses. Checked pull-ups. Finally realized the multiplexer channel mask was wrong. When the first sensor reading popped up on the Serial Monitor at 1 AM, I yelled loud enough to wake my parents."
+          },
+          {
+            "heading": "April–May: The Redesign",
+            "text": "My first design was wrong. I planned to compress cabin air directly. Then I did the math: cabin air is 99% nitrogen. Compressing it directly means 99% of your energy compresses nitrogen, not CO₂. I felt stupid for not seeing it sooner. Then I redesigned the whole thing: capture first, compress later. That is when AERO-LITE actually became AERO-LITE."
+          },
+          {
+            "heading": "May: The Dashboard",
+            "text": "I built the web dashboard in raw HTML, CSS, and JavaScript. No frameworks. I wanted to understand every line. It polls the ESP32 JSON API every second and draws a live chart. The first time I saw all three sensor cards updating — Cabin, Purified, Tank — I knew the prototype was real."
+          },
+          {
+            "heading": "May: Competition Prep",
+            "text": "I had 8 slides and a story to tell. I rewrote the deck maybe 20 times. A mentor told me my first draft was 'too dense.' I learned that being technical is not enough — you have to make people care first. I also learned KiCad 9.0.8 properly this time. My first PCB design had screw terminals, proper ground planes, and labels. It was not perfect, but it was not spaghetti anymore."
+          },
+          {
+            "heading": "May 2026: Submission",
+            "text": "I submitted AERO-LITE to the NASA Space Center Houston Carbon Capture Challenge. Whatever happens, I built something real. Something with live data, real sensors, and a story that matters to me. That is the real prize."
+          }
+        ]
+      },
+      {
+        "year": "2026",
+        "grade": "Summer",
+        "title": "What Is Next",
+        "future": true,
+        "paragraphs": [
+          "AERO-LITE Phase 2: Real thermal desorption at 248°F. I need to validate that the zeolite actually releases CO₂ when heated, and measure the breakthrough curves. This requires adult supervision, a safe testing setup, and probably a few more burned fingers.",
+          "Robotic Arm: I am finishing the 6-DOF arm I started earlier this year. It is built around the ESP32-S3, TD-8120MG high-torque servos, and a PCA9685 Pulse width modulation (PWM) controller. The mechanical frame is 3D-printed, the wiring uses screw terminals — no jumpers. This summer I am adding a Seeed Studio Grove Vision AI module so the arm can see what it is picking up instead of just moving where I tell it. The goal is not a factory robot. It is a proof that I can close the loop between sensing, deciding, and acting — all on one chip.",
+          "High School Transition: I am heading into St. Charles North as a freshman. I have already mapped my four-year plan: PLTW Aerospace Engineering, AP Physics C, UIUC dual-credit Calc 3, and as much hands-on building as I can fit.",
+          "Robotics Team: I want to join the school's robotics team and learn what it is like to build under competition pressure with a team. Solo building is great, but engineering is collaborative."
+        ],
+        "sections": []
+      }
+    ],
+    "beliefs_title": "Things I Believe",
+    "beliefs": [
+      {
+        "icon": "🔧",
+        "title": "Build Before You Talk",
+        "text": "Anyone can draw a block diagram. The hard part is making the block diagram actually work with real wires, real heat, and real sensors that fail at the worst moment."
+      },
+      {
+        "icon": "📉",
+        "title": "Document the Failures",
+        "text": "My README has a section called 'Iteration & Failure.' That is where the learning lives. The 99% nitrogen mistake. The I²C scanner that found nothing. The PCB traces that looked like spaghetti. If you only show successes, you are not credible."
+      },
+      {
+        "icon": "⚖️",
+        "title": "Mass Before Features",
+        "text": "Every pound to the Moon costs thousands to launch. I learned to optimize for mass before adding anything fancy. That mindset applies to code, schedules, and life."
+      },
+      {
+        "icon": "🛡️",
+        "title": "Safe By Default",
+        "text": "The bimetallic thermal cutoff on AERO-LITE works even if the ESP32 crashes. Hardware failsafes matter more than software elegance when people's lives are on the line."
+      },
+      {
+        "icon": "🤖",
+        "title": "Ask AI For Help",
+        "text": "I use AI the same way I use Google or a textbook — to learn faster and check my work. When I was stuck on I²C, I asked AI. When I needed help with slide design, I asked AI. When I needed a counselor email draft, I asked AI. Every line of code and every wire is still mine. AI is just a tutor that never sleeps."
+      },
+      {
+        "icon": "🌱",
+        "title": "Document For Others",
+        "text": "I am writing this blog for the hundreds of middle schoolers who think they are too young to build real things. You are not. Start with an LED. End with whatever you want."
+      }
+    ]
+  },
+  "projects": {
+    "page_title": "Projects",
+    "page_subtitle": "Not everything here is finished. That is the point.",
+    "aero_lite": {
+      "tag": "NASA Carbon Capture Challenge 2026",
+      "title": "AERO-LITE",
+      "subtitle": "A regenerative CO₂ preprocessor for lunar habitats. Started mid-March 2026 after an email from Space Center Houston. Built by an 8th grader.",
+      "prototype_image": "https://raw.githubusercontent.com/iamtilakpatel/aero-lite/main/media/photos/prototype-phase1.jpg",
+      "prototype_image_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
+      "stats": [
+        {
+          "num": "0.99",
+          "label": "lb / unit"
+        },
+        {
+          "num": "~8",
+          "label": "watts avg"
+        },
+        {
+          "num": "3",
+          "label": "live sensors"
+        },
+        {
+          "num": "6",
+          "label": "min cycle"
+        }
+      ],
+      "problem_title": "The Problem",
+      "problem_cards": [
+        {
+          "title": "ISS Solution: CDRA",
+          "lines": [
+            "661 pounds. 600 watts.",
+            "Vents CO₂ into space."
+          ],
+          "fatal": "Does not work on the Moon — no 'into space.'"
+        },
+        {
+          "title": "Backup: LiOH Canisters",
+          "lines": [
+            "Single-use. 1,440 needed for 180 days.",
+            "Over 6,000 pounds of dead mass."
+          ],
+          "fatal": "The math does not close."
+        },
+        {
+          "title": "AERO-LITE",
+          "lines": [
+            "Regenerative. 0.99 lb. ~8W.",
+            "Captures, releases, repeats."
+          ],
+          "win": "No canisters. No vents. Just zeolite and heat."
+        }
+      ],
+      "how_title": "How It Works",
+      "stages": [
+        {
+          "num": "1",
+          "title": "DRY",
+          "text": "Silica gel strips moisture from cabin air. Humidity kills CO₂ capture efficiency, so this happens first."
+        },
+        {
+          "num": "2",
+          "title": "TRAP",
+          "text": "Zeolite 13X bed captures CO₂ at room temperature. Nitrogen and oxygen pass through. Clean air returns to the cabin."
+        },
+        {
+          "num": "3",
+          "title": "RELEASE",
+          "text": "Heat to 248°F. CO₂ desorbs from zeolite as concentrated gas. Chamber is sealed — cabin loop stays isolated."
+        },
+        {
+          "num": "4",
+          "title": "COMPRESS",
+          "text": "Sweep gas pushes concentrated CO₂ through compressor into buffer tank at 22 psi. Steady feed for the Sabatier reactor."
+        }
+      ],
+      "cycle_note": "The cycle: ADSORB (~5 min) → REGEN (~1 min) → PURGE (~15 sec). The buffer tank decouples AERO-LITE's cycle from the Sabatier's continuous demand.",
+      "prototype_title": "The Prototype",
+      "prototype_text": "This is not a rendering. It is three mason jars on my desk, a live ESP32-S3, and a web dashboard that updates every second.",
+      "prototype_bullets": [
+        "Stage 1: Silica gel beads (orange, indicating type)",
+        "Stage 2+3: Zeolite 13X pellets in a shared bed",
+        "Stage 4: CO₂ buffer tank with pressure sensor",
+        "Control: ESP32-S3 DevKitC-1 with TCA9548A multiplexer",
+        "Sensors: 3× SCD41 (Cabin, Purified, Tank)",
+        "Dashboard: Pure HTML/CSS/JS, polling JSON API at 1 Hz"
+      ],
+      "prototype_data": "Live data: Cabin 1,029 ppm → Purified 477 ppm. Capture visible in real time.",
+      "learnings_title": "What I Learned",
+      "learnings": [
+        {
+          "title": "💡 Capture First, Compress Later",
+          "text": "My first design compressed cabin air directly. The math showed 99% of that energy compresses nitrogen, not CO₂. I felt stupid. Then I fixed it. That is engineering."
+        },
+        {
+          "title": "🔥 Thermal Swing > Pressure Swing",
+          "text": "Pressure swing uses less energy, but vacuum seals in microgravity are catastrophic leak risks. A PTC heater with a bimetallic cutoff is safer — even if the ESP32 crashes."
+        },
+        {
+          "title": "📊 The Dashboard Proves It",
+          "text": "Judges see 50 slide decks. They remember the one with a photo of real hardware and a URL where they can watch numbers change. Proof beats promises."
+        }
+      ],
+      "repo_title": "Repository",
+      "repo_text": "All firmware, schematics, 3D models, and documentation are open source.",
+      "repo_url": "https://github.com/iamtilakpatel/aero-lite",
+      "repo_label": "github.com/iamtilakpatel/aero-lite"
+    }
+  },
+  "blog": {
+    "page_title": "Blog",
+    "page_subtitle": "Build logs, debugging stories, and things I wish someone told me earlier. I write these because the gap between 'I want to build that' and 'I actually built that' is filled with mistakes most people never talk about."
+  }
+}

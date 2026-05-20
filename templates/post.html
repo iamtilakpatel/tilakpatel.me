@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — {{ meta.author }}{% endblock %}
+{% block body_page %}post{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <div class="container">
+        <header class="post-header">
+            <span class="post-date">{{ post.date }}</span>
+            <h1>{{ post.title }}</h1>
+            <p class="post-subtitle">{{ post.excerpt }}</p>
+            <div class="post-tags">
+                {% for tag in post.tags %}
+                <span class="blog-tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </header>
+        <div class="post-content">
+            {{ post.body | safe }}
+        </div>
+    </div>
+</article>
+{% endblock %}

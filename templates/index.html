@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block title %}{{ meta.author }} — Building Things
+That Matter{% endblock %} {% block body_page %}home{% endblock %} {% block
+content %}
+<header class="hero">
+  <div class="hero-content">
+    <p class="hero-label">{{ home.label }}</p>
+    <div class="hero-avatar">
+      <img src="assets/img/tilak-avatar.png" alt="Tilak Patel" />
+    </div>
+    <h1>{{ home.title }}</h1>
+    <p class="hero-subtitle">{{ home.subtitle }}</p>
+    <div class="hero-buttons">
+      {% for btn in home.buttons %}
+      <a
+        href="{{ btn.url }}"
+        class="btn btn-{% if btn.style == 'primary' %}primary{% else %}secondary{% endif %}"
+        >{{ btn.label }}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ home.projects_section_title }}</h2>
+    <div class="project-cards">
+      {% for p in home.projects %}
+      <div class="project-card">
+        <div class="card-tag tag-{{ p.tag_color }}">{{ p.tag }}</div>
+        <h3>{{ p.title }}</h3>
+        <p>{{ p.description }}</p>
+        {% if p.link %}
+        <a href="{{ p.link }}" class="card-link">{{ p.link_text }}</a>
+        {% else %}
+        <span class="card-link-soon">{{ p.link_text }}</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ home.blog_section_title }}</h2>
+    <p class="section-intro">{{ home.blog_intro }}</p>
+    <div class="blog-list">
+      {% for post in posts[:3] %}
+      <article class="blog-card">
+        <span class="blog-date">{{ post.date }}</span>
+        <h2><a href="{{ post.slug }}.html">{{ post.title }}</a></h2>
+        <p class="blog-excerpt">{{ post.excerpt }}</p>
+        {% for tag in post.tags %}
+        <span class="blog-tag">{{ tag }}</span>
+        {% endfor %}
+      </article>
+      {% endfor %}
+    </div>
+    <div class="center">
+      <a href="blog.html" class="btn btn-secondary">All Blog Posts</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{{ home.roadmap_section_title }}</h2>
+    <div class="timeline-mini">
+      {% for item in home.roadmap %}
+      <div class="tl-item">
+        <span class="tl-dot {{ item.status }}"></span>
+        <span class="tl-label">{{ item.label }}</span>
+        <span class="tl-text">{{ item.text }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
