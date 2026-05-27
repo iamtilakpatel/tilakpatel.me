@@ -40,7 +40,7 @@ I submitted on May 15, 2026. Now I wait. Whatever happens, I have a GitHub repo 
 
 ## The Win
 
-The ceremony started at 6:00 PM Central. I had the Zoom open on my laptop and my parents on either side, which I pretended to be annoyed by but actually wanted.
+The ceremony started at 6:00 PM Central on May 27, 2026. I had the Zoom open on my laptop and my parents on either side, which I pretended to be annoyed by but actually wanted.
 
 They ran through Elementary School awards first. I watched team after team get called up — kids who built moss walls and water filters. I was happy for them and also quietly calculating how much longer until the Middle School section.
 
