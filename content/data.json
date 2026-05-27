@@ -9,7 +9,7 @@
     "email": "iamtilakpatel@gmail.com"
   },
   "nav": {
-    "brand": "TILAK.DEV",
+    "brand": "TILAK PATEL",
     "links": [
       {
         "label": "Home",
@@ -62,7 +62,7 @@
     "projects_section_title": "What I Am Working On",
     "projects": [
       {
-        "tag": "NASA Top Individual Award",
+        "tag": "NASA Top Individual Award Winner",
         "tag_color": "winner",
         "title": "AERO-LITE",
         "description": "A regenerative CO₂ preprocessor for lunar habitats. I started this in mid-March 2026 after an email from the STEM Innovation Team at Space Center Houston. Three months later I had a working prototype with live sensors and a web dashboard — and won Top Individual Award in the national middle school section.",

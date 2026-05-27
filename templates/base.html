@@ -1,35 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{{ meta.author }} — Building Things That Matter{% endblock %}</title>
-    <meta name="description" content="{% block description %}{{ meta.author }} is an incoming freshman building robots, circuit boards, and aerospace prototypes.{% endblock %}">
-    <link rel="stylesheet" href="assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}{{ meta.author }} — Building Things That Matter{%
+      endblock %}
+    </title>
+    <meta
+      name="description"
+      content="{% block description %}{{ meta.author }} is an incoming freshman building robots, circuit boards, and aerospace prototypes.{% endblock %}"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
     {% block head %}{% endblock %}
-</head>
-<body data-page="{% block body_page %}home{% endblock %}">
+  </head>
+  <body data-page="{% block body_page %}home{% endblock %}">
     <nav class="navbar">
-        <div class="nav-brand">{{ nav.brand }}</div>
-        <div class="nav-links">
-            {% for link in nav.links %}
-            <a href="{{ link.url }}">{{ link.label }}</a>
-            {% endfor %}
-        </div>
+      <div class="nav-brand">
+        <a href="index.html">
+          <img src="assets/images/logo.png" alt="{{ nav.brand }}" />
+        </a>
+      </div>
+      <div class="nav-links">
+        {% for link in nav.links %}
+        <a href="{{ link.url }}">{{ link.label }}</a>
+        {% endfor %}
+      </div>
     </nav>
 
     {% block content %}{% endblock %}
 
     <footer class="footer">
-        <div class="container">
-            <p>{{ footer.line1 }}</p>
-            <p class="footer-small">{{ footer.line2 }}</p>
-            <p class="footer-links">
-                {% for link in footer.links %}
-                <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %} · {% endif %}
-                {% endfor %}
-            </p>
-        </div>
+      <div class="container">
+        <p>{{ footer.line1 }}</p>
+        <p class="footer-small">{{ footer.line2 }}</p>
+        <p class="footer-links">
+          {% for link in footer.links %}
+          <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %} ·
+          {% endif %} {% endfor %}
+        </p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
