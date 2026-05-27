@@ -6,7 +6,7 @@ excerpt: 8 slides, and a prototype that tweets CO₂ data. What I learned about 
 slug: nasa-challenge-submission
 ---
 
-I spent three months building a CO₂ capture prototype. I spent three weeks figuring out how to explain it in 8 slides.
+I spent almost 2 months building a CO₂ capture prototype. I spent three weeks figuring out how to explain it in 8 slides.
 
 ## The Deck Is Not the Project
 
@@ -37,3 +37,36 @@ Most middle school submissions are drawings or CAD renders. I have a photo of th
 ## The Waiting
 
 I submitted on May 15, 2026. Now I wait. Whatever happens, I have a GitHub repo with 10+ commits, a working prototype, and a story that matters to me. That is the real prize.
+
+## The Win
+
+The ceremony started at 6:00 PM Central. I had the Zoom open on my laptop and my parents on either side, which I pretended to be annoyed by but actually wanted.
+
+They ran through Elementary School awards first. I watched team after team get called up — kids who built moss walls and water filters. I was happy for them and also quietly calculating how much longer until the Middle School section.
+
+Then the slide changed.
+
+**Middle School**  
+**Top Individual Award**  
+**Tilak Patel**  
+**Thompson Thunders | AERO-LITE**  
+**Thompson Middle School**
+
+I did not breathe for about three seconds. My mom started clapping before I processed what I was looking at. My dad just pointed at the screen like I had not already seen it.
+
+The judge said something about technical detail and mission awareness and systems thinking. I heard the words but I was staring at my name on a Space Center Houston slide and thinking about three months ago — mid-March, that first email from the STEM Innovation Team, the moment I realized I had eight weeks to build something I barely understood.
+
+I thought about the SCD41 that would not show up on the I²C scanner for three days. The activated carbon I threw out after learning it loves water more than CO₂. The night I ran the nitrogen compression numbers and felt stupid, then redesigned everything. The 3D-printed housing that warped on the first print. The web dashboard that actually worked on the third try.
+
+All of that was on that slide. Not the glass jars. Not the wires. The _decisions_ — why zeolite 13X, why thermal swing, why concentrate before compress, why a bimetallic failsafe when software alone is not enough.
+
+That is what the judges saw. That is what they called out: mass, power, automation, safety, future development. Not buzzwords. Trade-offs I actually made at this desk.
+
+I still have the prototype. It is still on my desk, still collecting dust, still running the same state machine. But now it is not just a project I submitted and hoped would work. It is a project that worked well enough to convince engineers who design actual spacecraft life support systems.
+
+The repo is public. The build log is documented. And I no longer have to end this story with "whatever happens."
+
+This is what happened.
+
+**[Watch the ceremony →](link-to-your-video)**  
+**[GitHub repo →](https://github.com/iamtilakpatel/aero-lite)**

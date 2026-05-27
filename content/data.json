@@ -62,17 +62,17 @@
     "projects_section_title": "What I Am Working On",
     "projects": [
       {
-        "tag": "NASA Challenge",
-        "tag_color": "red",
+        "tag": "NASA Top Individual Award",
+        "tag_color": "winner",
         "title": "AERO-LITE",
-        "description": "A regenerative CO₂ preprocessor for lunar habitats. I started this in mid-March 2026 after an email from the STEM Innovation Team at Space Center Houston. Three months later I had a working prototype with live sensors and a web dashboard.",
+        "description": "A regenerative CO₂ preprocessor for lunar habitats. I started this in mid-March 2026 after an email from the STEM Innovation Team at Space Center Houston. Three months later I had a working prototype with live sensors and a web dashboard — and won Top Individual Award in the national middle school section.",
         "link": "projects.html#aero-lite",
         "link_text": "Read the build log →"
       },
       {
-        "tag": "Embedded",
+        "tag": "Robotics",
         "tag_color": "blue",
-        "title": "ESP32 Vision Arm",
+        "title": "Ashtavakra",
         "description": "AI-driven robotic arm using Seeed Studio Grove Vision AI. C++ firmware with web-based servo control. On hold while I finish AERO-LITE, but coming back this summer.",
         "link": "",
         "link_text": "Build log coming soon"
