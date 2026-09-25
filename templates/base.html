@@ -11,17 +11,18 @@
       name="description"
       content="{% block description %}{{ meta.author }} is an incoming freshman building robots, circuit boards, and aerospace prototypes.{% endblock %}"
     />
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
     {% block head %}{% endblock %}
   </head>
   <body data-page="{% block body_page %}home{% endblock %}">
     <nav class="navbar">
       <div class="nav-brand">
-        <a href="index.html">
-          <img src="assets/images/logo.png" alt="{{ nav.brand }}" />
+        <a href="/index.html">
+          <img src="/assets/images/logo.png" alt="{{ nav.brand }}" />
         </a>
       </div>
+
       <div class="nav-links">
         {% for link in nav.links %}
         <a href="{{ link.url }}">{{ link.label }}</a>

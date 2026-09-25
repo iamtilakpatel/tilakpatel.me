@@ -1,5 +1,5 @@
 ---
-date: September 2026
+date: August 2026
 title: How a LEGO Grabber Led Me to Build My Own Robotic Arm
 tags: [Robotics, Arduino, Engineering]
 excerpt: I started with a LEGO grabber that could not bend. A few years later, I was building my own Wi-Fi-controlled robotic arm, writing the firmware and web controller, and learning that the hardest part of robotics is often everything between "it moves" and "it works well."

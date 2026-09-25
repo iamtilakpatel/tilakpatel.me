@@ -13,19 +13,19 @@
     "links": [
       {
         "label": "Home",
-        "url": "index.html"
+        "url": "/index.html"
       },
       {
         "label": "My Journey",
-        "url": "about.html"
+        "url": "/about.html"
       },
       {
         "label": "Projects",
-        "url": "projects.html"
+        "url": "/projects.html"
       },
       {
         "label": "Blog",
-        "url": "blog.html"
+        "url": "/blog.html"
       }
     ]
   },
@@ -63,18 +63,20 @@
     "projects": [
       {
         "tag": "NASA Top Individual Award Winner",
+        "slug": "aero-lite",
         "tag_color": "winner",
         "title": "AERO-LITE",
         "description": "A regenerative CO₂ preprocessor for lunar habitats. I started this in mid-March 2026 after an email from the STEM Innovation Team at Space Center Houston. Three months later I had a working prototype with live sensors and a web dashboard — and won Top Individual Award in the national middle school section.",
-        "link": "projects.html#aero-lite",
+        "link": "projects/aero-lite",
         "link_text": "Read the build log →"
       },
       {
         "tag": "Robotics",
+        "slug": "ashtavakra",
         "tag_color": "blue",
         "title": "Ashtavakra Robotic Arm",
         "description": "A Wi-Fi-controlled 6-DoF robotic arm I built with custom Arduino firmware and a browser-based controller. What started as a simple servo project grew into hands-on work with motion control, calibration, electronics, networking, and engineering problem-solving.",
-        "link": "https://github.com/iamtilakpatel/ashtavakra",
+        "link": "projects/ashtavakra",
         "link_text": "View project details →"
       }
     ],

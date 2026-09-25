@@ -2,11 +2,11 @@
 date: September 2026
 title: When My Robotic Arm Didn’t Work: How I Learned to Solve Engineering Problems
 tags: [Robotics, Engineering, Debugging]
-excerpt: I started by changing code until something worked. After a fried board, a missing I2C device, strange servo channels, and a Wi-Fi address of 0.0.0.0, I learned a better way to debug: isolate one problem, test one assumption, and collect evidence before changing anything.
+excerpt: I started by changing code until something worked. After a fried board, a missing I2C device, and strange servo channels, I learned a better way to solve: isolate one problem, test one assumption, and collect evidence before changing anything.
 slug: robotic-arm-engineering-problems
 ---
 
-The first time Ashtavakra, my 6 DoF robotic arm, stopped working, I did what I usually did.
+The first time unassembled Ashtavakra, my 6 DoF robotic arm, stopped working, I did what I usually did.
 
 I changed the code.
 

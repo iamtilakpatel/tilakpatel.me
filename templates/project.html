@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} — {{ meta.author }}{% endblock %}
+{% block body_page %}project{% endblock %}
+
+{% block content %}
+
+<header class="page-header">
+  <div class="container">
+    {% if project.tag %}
+    <div class="project-tag">{{ project.tag }}</div>
+    {% endif %}
+
+    <h1>{{ project.title }}</h1>
+
+    {% if project.subtitle %}
+    <p class="subtitle">{{ project.subtitle }}</p>
+    {% endif %}
+
+    {% if project.stats %}
+    <div class="project-stats">
+      {% for s in project.stats %}
+      <div class="p-stat">
+        <span class="p-num">{{ s.num }}</span>
+        <span class="p-label">{{ s.label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</header>
+
+{% if project.problem_cards %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ project.problem_title | default("The Problem") }}
+    </h2>
+
+    <div class="problem-grid">
+      {% for card in project.problem_cards %}
+      <div class="problem-card {% if card.win %}solution{% endif %}">
+        <h4>{{ card.title }}</h4>
+
+        {% if card.lines %}
+          {% for line in card.lines %}
+          <p>{{ line }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {% if card.fatal %}
+        <p class="problem-fatal">{{ card.fatal }}</p>
+        {% endif %}
+
+        {% if card.win %}
+        <p class="solution-win">{{ card.win }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if project.stages %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ project.how_title | default("How It Works") }}
+    </h2>
+
+    <div class="stages">
+      {% for stage in project.stages %}
+      <div class="stage">
+        <div class="stage-num">{{ stage.num }}</div>
+        <h4>{{ stage.title }}</h4>
+        <p>{{ stage.text }}</p>
+      </div>
+
+      {% if not loop.last %}
+      <div class="stage-arrow">→</div>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if project.cycle_note %}
+    <div class="cycle-note">{{ project.cycle_note }}</div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+{% if project.prototype_title or project.prototype_text or project.prototype_image %}
+<section class="section">
+  <div class="container">
+    {% if project.prototype_title %}
+    <h2 class="section-title">{{ project.prototype_title }}</h2>
+    {% endif %}
+
+    {% if project.prototype_image %}
+    <div class="prototype-image-wrap">
+      <img
+        src="{{ project.prototype_image }}"
+        alt="{{ project.prototype_image_alt | default(project.title) }}"
+        class="prototype-image"
+      />
+
+      {% if project.prototype_image_alt %}
+      <p class="prototype-caption">{{ project.prototype_image_alt }}</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="prototype-content">
+      {% if project.prototype_text %}
+      <p>{{ project.prototype_text }}</p>
+      {% endif %}
+
+      {% if project.prototype_bullets %}
+      <ul>
+        {% for bullet in project.prototype_bullets %}
+        <li>{{ bullet }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      {% if project.prototype_data %}
+      <p class="prototype-data">{{ project.prototype_data }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if project.learnings %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ project.learnings_title | default("What I Learned") }}
+    </h2>
+
+    <div class="learnings">
+      {% for l in project.learnings %}
+      <div class="learning">
+        <h4>{{ l.title }}</h4>
+        <p>{{ l.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if project.repo_url %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">
+      {{ project.repo_title | default("Repository") }}
+    </h2>
+
+    {% if project.repo_text %}
+    <p class="repo-text">{{ project.repo_text }}</p>
+    {% endif %}
+
+    <div class="center">
+      <a
+        href="{{ project.repo_url }}"
+        class="btn btn-primary btn-large"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ project.repo_label | default("View repository") }}
+      </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="container center">
+    <a href="/projects/" class="btn">
+      ← Back to Projects
+    </a>
+  </div>
+</section>
+
+{% endblock %}
