@@ -1,8 +1,8 @@
 {
   "meta": {
     "author": "Tilak Patel",
-    "grade": "8th Grade, Thompson Middle School",
-    "next": "Incoming Freshman, St. Charles North High School",
+    "grade": "Freshman, St. Charles North High School",
+    "next": "Class of 2030",
     "year": 2026,
     "pathway": "Aerospace & Robotics Engineering",
     "repo": "https://github.com/iamtilakpatel/aero-lite",
@@ -72,10 +72,10 @@
       {
         "tag": "Robotics",
         "tag_color": "blue",
-        "title": "Ashtavakra",
-        "description": "AI-driven robotic arm using Seeed Studio Grove Vision AI. C++ firmware with web-based servo control. On hold while I finish AERO-LITE, but coming back this summer.",
-        "link": "",
-        "link_text": "Build log coming soon"
+        "title": "Ashtavakra Robotic Arm",
+        "description": "A Wi-Fi-controlled 6-DoF robotic arm I built with custom Arduino firmware and a browser-based controller. What started as a simple servo project grew into hands-on work with motion control, calibration, electronics, networking, and engineering problem-solving.",
+        "link": "https://github.com/iamtilakpatel/ashtavakra",
+        "link_text": "View project details →"
       }
     ],
     "blog_section_title": "Latest from the Blog",
@@ -346,7 +346,123 @@
       "repo_text": "All firmware, schematics, 3D models, and documentation are open source.",
       "repo_url": "https://github.com/iamtilakpatel/aero-lite",
       "repo_label": "github.com/iamtilakpatel/aero-lite"
+    },
+    "ashtavakra": {
+  "tag": "Independent Robotics Project · 2026",
+  "title": "Ashtavakra Robotic Arm",
+  "subtitle": "A Wi-Fi-controlled 6-DoF robotic arm with custom firmware and a browser-based controller. Started in 8th grade and still evolving in high school.",
+  "prototype_image": "https://raw.githubusercontent.com/iamtilakpatel/ashtavakra/main/assets/photos/assembled-arm.jpg",
+  "prototype_image_alt": "Ashtavakra robotic arm with multiple servo-driven joints and gripper",
+
+  "stats": [
+    {
+      "num": "6",
+      "label": "degrees of freedom"
+    },
+    {
+      "num": "8",
+      "label": "servo motors"
+    },
+    {
+      "num": "7",
+      "label": "user controls"
+    },
+    {
+      "num": "Wi-Fi",
+      "label": "browser control"
     }
+  ],
+
+  "problem_title": "What I Wanted to Build",
+  "problem_cards": [
+    {
+      "title": "More Than a Kit",
+      "lines": [
+        "Most robotic-arm kits already include the control system.",
+        "That makes them easy to assemble, but harder to learn from."
+      ],
+      "fatal": "I wanted to understand what happens between a control on a screen and a joint moving."
+    },
+    {
+      "title": "Movement Was Not Enough",
+      "lines": [
+        "Servos could move, but motion was jerky.",
+        "Physical alignment and channel mapping were inconsistent."
+      ],
+      "fatal": "A robot that moves is not automatically a robot that moves well."
+    },
+    {
+      "title": "My Approach",
+      "lines": [
+        "Custom Arduino firmware.",
+        "Custom browser controller.",
+        "Software calibration and smooth motion."
+      ],
+      "win": "Build the control system myself, test it, break it, understand it, and improve it."
+    }
+  ],
+
+  "how_title": "How It Works",
+  "stages": [
+    {
+      "num": "1",
+      "title": "CONTROL",
+      "text": "A phone or laptop opens the web controller I built using HTML, CSS, and JavaScript."
+    },
+    {
+      "num": "2",
+      "title": "PROCESS",
+      "text": "Commands travel over Wi-Fi to an Arduino UNO R4 WiFi running my motion-control firmware."
+    },
+    {
+      "num": "3",
+      "title": "DRIVE",
+      "text": "The Arduino communicates over I2C with an Emakefun Motor Driver V5.2, which controls all eight servos."
+    },
+    {
+      "num": "4",
+      "title": "MOVE",
+      "text": "The servos move the base, arm, wrist, and gripper while the firmware handles calibration, speed, and smooth motion."
+    }
+  ],
+
+  "cycle_note": "The control path is simple: Browser → Wi-Fi → Arduino UNO R4 WiFi → I2C Motor Driver → Servos → Robotic Arm.",
+
+  "prototype_title": "The Build",
+  "prototype_text": "Ashtavakra is not controlled by a pre-built robotics app. I wrote the Arduino firmware and browser interface, mapped the servo channels, calibrated the joints, and added the tools I needed as problems appeared.",
+
+  "prototype_bullets": [
+    "Controller: Arduino UNO R4 WiFi",
+    "Servo driver: Emakefun Motor Driver V5.2 at I2C address 0x60",
+    "Actuation: 8× TD-8120MG servos",
+    "Motion: 6-DoF arm + gripper with 7 user controls and 1 twin support servo",
+    "Interface: Custom HTML/CSS/JavaScript browser controller",
+    "Firmware: C++ with servo offsets, speed control, S-curve motion, reset, and emergency stop"
+  ],
+
+  "prototype_data": "Current result: a working robotic arm that can be controlled wirelessly from a phone or laptop without installing a dedicated app.",
+
+  "learnings_title": "What I Learned",
+  "learnings": [
+    {
+      "title": "🔍 Test Instead of Guess",
+      "text": "When the motor driver would not respond, I stopped changing the main program and wrote a small I2C scanner. It found the board at 0x60. That changed how I debug problems: isolate one assumption, test it, then move on."
+    },
+    {
+      "title": "⚙️ Software Can Fix Physical Problems",
+      "text": "Some servo horns were slightly misaligned. Instead of repeatedly rebuilding the joints, I added software offsets so each servo could be calibrated individually."
+    },
+    {
+      "title": "🧩 Build the Whole System",
+      "text": "The hardest part was not making one servo move. It was getting mechanics, electronics, firmware, Wi-Fi, and the browser interface to work together reliably."
+    }
+  ],
+
+  "repo_title": "Repository",
+  "repo_text": "Firmware, web controller, architecture, design decisions, and project documentation are available in the public repository.",
+  "repo_url": "https://github.com/iamtilakpatel/ashtavakra",
+  "repo_label": "github.com/iamtilakpatel/ashtavakra"
+}
   },
   "blog": {
     "page_title": "Blog",
