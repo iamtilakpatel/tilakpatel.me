@@ -292,6 +292,8 @@ a:hover {
 
 .card-tag {
   display: inline-block;
+  align-self: flex-start;
+  width: fit-content;
   padding: 3px 10px;
   border-radius: 999px;
   font-size: 0.7rem;

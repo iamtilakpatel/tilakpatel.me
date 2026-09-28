@@ -62,18 +62,4 @@ content %}
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">{{ home.roadmap_section_title }}</h2>
-    <div class="timeline-mini">
-      {% for item in home.roadmap %}
-      <div class="tl-item">
-        <span class="tl-dot {{ item.status }}"></span>
-        <span class="tl-label">{{ item.label }}</span>
-        <span class="tl-text">{{ item.text }}</span>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
 {% endblock %}

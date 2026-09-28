@@ -12,10 +12,6 @@
     "brand": "TILAK PATEL",
     "links": [
       {
-        "label": "Home",
-        "url": "/index.html"
-      },
-      {
         "label": "My Journey",
         "url": "/about.html"
       },
@@ -81,30 +77,7 @@
       }
     ],
     "blog_section_title": "Latest from the Blog",
-    "blog_intro": "I write about what breaks, what fixes it, and what I wish someone told me before I started.",
-    "roadmap_section_title": "The Road Ahead",
-    "roadmap": [
-      {
-        "label": "8th Grade",
-        "status": "done",
-        "text": "Built AERO-LITE Phase 1. Learned KiCad. Debugged I²C at 2 AM. Asked AI for help when I was stuck."
-      },
-      {
-        "label": "Summer 2026",
-        "status": "current",
-        "text": "Thermal validation for AERO-LITE. Start high school course planning. Maybe build a second robot."
-      },
-      {
-        "label": "9th Grade",
-        "status": "future",
-        "text": "PLTW Principles of Engineering. Algebra 2 Honors. First high school robotics build. Keep documenting."
-      },
-      {
-        "label": "10th–12th",
-        "status": "future",
-        "text": "Aerospace Engineering pathway. AP Physics C. UIUC dual-credit Calc 3. More hardware. More failures. More learning."
-      }
-    ]
+    "blog_intro": "I write about what breaks, what fixes it, and what I wish someone told me before I started."
   },
  "about": {
   "page_title": "My Journey",
