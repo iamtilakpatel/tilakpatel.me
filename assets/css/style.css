@@ -1028,12 +1028,15 @@ a:hover {
     flex-direction: column;
   }
   .timeline-item::before {
-    left: 20px;
+    display: none;
   }
   .timeline-marker {
     text-align: left;
-    padding: 0 0 10px 0;
+    padding: 0 0 12px 0;
     width: auto;
+  }
+  .timeline-content {
+    width: 100%;
   }
   .beliefs {
     grid-template-columns: 1fr;
