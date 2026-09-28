@@ -15,6 +15,7 @@
 <section class="section">
   <div class="container">
     <div class="project-cards">
+
       {% for project in project_items %}
       <div class="project-card">
 
@@ -24,6 +25,13 @@
             src="{{ project.prototype_image }}"
             alt="{{ project.prototype_image_alt | default(project.title) }}"
             class="project-card-image"
+          />
+        </div>
+        {% else %}
+        <div class="project-card-placeholder">
+          <img
+            src="/assets/images/project-placeholder.png"
+            alt="{{ project.title }} project image coming soon"
           />
         </div>
         {% endif %}
@@ -51,6 +59,7 @@
 
       </div>
       {% endfor %}
+
     </div>
   </div>
 </section>
