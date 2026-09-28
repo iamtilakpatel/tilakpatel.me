@@ -9,7 +9,7 @@ endblock %} {% block body_page %}about{% endblock %} {% block content %}
 
 <section class="section">
   <div class="container">
-    <div class="journey-intro">{{ about.intro }}</div>
+    <div class="journey-intro">{{ about.intro | safe }}</div>
     <div class="timeline">
       {% for item in about.timeline %}
       <div

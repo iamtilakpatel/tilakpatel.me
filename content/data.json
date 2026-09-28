@@ -109,43 +109,30 @@
  "about": {
   "page_title": "My Journey",
 
-  "page_subtitle": "From LEGO builds to real engineering projects, one step at a time.",
+  "page_subtitle": "What I am building now, what shaped it, and what I learned along the way.",
 
-  "intro": "I have always liked figuring out how things work. What started with LEGO, motors, and simple Arduino projects slowly turned into bigger challenges like robotic arms and AERO-LITE. A lot of things did not work the first time, and some still do not. This page is about what I built, what went wrong, and what I learned along the way.",
+  "intro": "The projects on this page look very different, but they all started the same way: I found something I did not understand and wanted to figure it out. Whether it was <b>making an LED blink</b>, <b>building a robotic arm</b>, or <b>researching how astronauts could manage CO₂ on the Moon</b>, each challenge pulled me toward the next one.",
 
   "timeline": [
     {
-      "year": "2021–2023",
-      "grade": "4th–5th Grade",
-      "title": "Gears Before Code",
+      "year": "2026-2027",
+      "grade": "Freshman Year",
+      "title": "From Control to Vision",
+      "highlight": true,
       "paragraphs": [
-        "I spent a lot of time building LEGO and other mechanical sets with motors, gears, and moving parts. I liked following the instructions at first, but I liked taking things apart and changing them even more.",
-        "By the end of 5th grade, I wanted to do more than connect gears and motors. I wanted to control what I built with code."
+        "I started high school with a challenging course load that matches where I want to go: PLTW Principles of Engineering Honors, Algebra 2 Honors, Biology Honors, English Honors, and AP World History. I wanted freshman year to push me both technically and academically while I continued building projects outside the classroom."
       ],
-      "sections": []
+      "sections": [
+        {
+          "heading": "Summer 2026: A Working Ashtavakra",
+          "text": "I turned Ashtavakra from an early test into a working 3D-printed robotic arm that I can control over Wi-Fi. It can move the way I tell it to, but it still depends on me for almost every decision."
+        },
+        {
+          "heading": "Fall 2026: Giving It Vision",
+          "text": "I am now working on the Vision AI part of Ashtavakra. My goal is for the arm to recognize objects and eventually use what it sees to help decide how to move. It is still a work in progress, and I am learning a lot while trying to make the different parts work together."
+        }
+      ]
     },
-
-    {
-      "year": "2023–2024",
-      "grade": "6th Grade",
-      "title": "The Spark",
-      "paragraphs": [
-        "My dad gave me an Arduino Starter Kit for my birthday. I started with a blinking LED, then buttons, sensors, and projects I found online. Most of them did not work the first time, but I loved seeing a few lines of code make something happen in the real world."
-      ],
-      "sections": []
-    },
-
-    {
-      "year": "2024–2025",
-      "grade": "7th Grade",
-      "title": "Trying More on My Own",
-      "paragraphs": [
-        "I started building projects that combined code, sensors, and movement. An Arduino car taught me how to work with motors and sensors, and later I discovered the ESP32 and built a simple web page that let me control servos from my phone.",
-        "This was also when I started moving away from copying tutorials and trying more ideas of my own. By the end of 7th grade, I signed up for PLTW Introduction to Engineering because I wanted to learn more before taking on bigger projects."
-      ],
-      "sections": []
-    },
-
     {
       "year": "2025–2026",
       "grade": "8th Grade",
@@ -168,27 +155,35 @@
         }
       ]
     },
-
     {
-      "year": "2026",
-      "grade": "Freshman Year",
-      "title": "From Control to Vision",
-      "highlight": true,
+      "year": "2024–2025",
+      "grade": "7th Grade",
+      "title": "Trying More on My Own",
       "paragraphs": [
-        "I started high school with a challenging course load that matches where I want to go: PLTW Principles of Engineering Honors, Algebra 2 Honors, Biology Honors, English Honors, and AP World History. I wanted freshman year to push me both technically and academically while I continued building projects outside the classroom."
+        "I started building projects that combined code, sensors, and movement. An Arduino car taught me how to work with motors and sensors, and later I discovered the ESP32 and built a simple web page that let me control servos from my phone.",
+        "This was also when I started moving away from copying tutorials and trying more ideas of my own. By the end of 7th grade, I signed up for PLTW Introduction to Engineering because I wanted to learn more before taking on bigger projects."
       ],
-      "sections": [
-        {
-          "heading": "Summer 2026: A Working Ashtavakra",
-          "text": "I turned Ashtavakra from an early test into a working 3D-printed robotic arm that I can control over Wi-Fi. It can move the way I tell it to, but it still depends on me for almost every decision."
-        },
-        {
-          "heading": "Fall 2026: Giving It Vision",
-          "text": "I am now working on the Vision AI part of Ashtavakra. My goal is for the arm to recognize objects and eventually use what it sees to help decide how to move. It is still a work in progress, and I am learning a lot while trying to make the different parts work together."
-        }
-      ]
+      "sections": []
     },
-
+    {
+      "year": "2023–2024",
+      "grade": "6th Grade",
+      "title": "The Spark",
+      "paragraphs": [
+        "My dad gave me an Arduino Starter Kit for my birthday. I started with a blinking LED, then buttons, sensors, and projects I found online. Most of them did not work the first time, but I loved seeing a few lines of code make something happen in the real world."
+      ],
+      "sections": []
+    },
+    {
+      "year": "2021–2023",
+      "grade": "4th–5th Grade",
+      "title": "Gears Before Code",
+      "paragraphs": [
+        "I spent a lot of time building LEGO and other mechanical sets with motors, gears, and moving parts. I liked following the instructions at first, but I liked taking things apart and changing them even more.",
+        "By the end of 5th grade, I wanted to do more than connect gears and motors. I wanted to control what I built with code."
+      ],
+      "sections": []
+    },
     {
       "year": "2027+",
       "grade": "Looking Ahead",
