@@ -315,6 +315,11 @@
   "about": {
     "page_title": "My Journey",
     "page_subtitle": "What I am building now, what shaped it, and what I learned along the way.",
+    "kicker": "STUDENT · BUILDER · ASPIRING AEROSPACE ENGINEER",
+    "portrait": {
+      "src": "/assets/images/hero-photo.jpg",
+      "alt": "Tilak Patel"
+    },
     "intro": "The projects on this page look very different, but they all started the same way: I found something I did not understand and wanted to figure it out. Whether it was <b>making an LED blink</b>, <b>building a robotic arm</b>, or <b>researching how astronauts could manage CO₂ on the Moon</b>, each challenge pulled me toward the next one.",
     "timeline": [
       {
@@ -322,6 +327,11 @@
         "grade": "Freshman Year",
         "title": "From Control to Vision",
         "highlight": true,
+        "art": {
+          "type": "include",
+          "template": "art/arm-schematic.html",
+          "caption": "How control reaches the arm: browser → Wi-Fi → Arduino UNO R4 WiFi → motor driver → servos. Vision is the next link in that chain."
+        },
         "paragraphs": [
           "I started high school with a challenging course load that matches where I want to go: PLTW Principles of Engineering Honors, Algebra 2 Honors, Biology Honors, English Honors, and AP World History. I wanted freshman year to push me both technically and academically while I continued building projects outside the classroom."
         ],
@@ -339,18 +349,27 @@
       {
         "year": "2025–2026",
         "grade": "8th Grade",
+        "turning_point": true,
         "title": "Building With Purpose",
+        "art": {
+          "type": "image",
+          "src": "/assets/images/aero-prototype.jpg",
+          "alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
+          "caption": "Phase 1 prototype: three mason jars, a live ESP32-S3, and a dashboard updating every second."
+        },
         "paragraphs": [
           "In 8th grade, I started thinking differently about my projects. Instead of only asking, \"Can I build this?\" I started asking, \"What problem could this solve?\""
         ],
         "sections": [
           {
             "heading": "Fall 2025: Ashtavakra Begins",
-            "text": "The idea came from a LEGO grabber I had built years earlier. I started Ashtavakra as my own robotic-arm project and built an early version to see if I could get the mechanics, electronics, and code working together."
+            "text": "The idea came from a LEGO grabber I had built years earlier. I started Ashtavakra as my own robotic-arm project and built an early version to see if I could get the mechanics, electronics, and code working together.",
+            "link": { "label": "Explore the Ashtavakra case study →", "url": "/projects/ashtavakra/" }
           },
           {
             "heading": "Spring 2026: AERO-LITE",
-            "text": "I entered Space Center Houston's Carbon Capture Challenge and built AERO-LITE, a project focused on removing CO₂ from the air in a future lunar habitat. I had to learn about chemistry, sensors, electronics, programming, and a lot of things I had never worked with before."
+            "text": "I entered Space Center Houston's Carbon Capture Challenge and built AERO-LITE, a project focused on removing CO₂ from the air in a future lunar habitat. I had to learn about chemistry, sensors, electronics, programming, and a lot of things I had never worked with before.",
+            "link": { "label": "Explore the AERO-LITE case study →", "url": "/projects/aero-lite/" }
           },
           {
             "heading": "May 2026: Top Individual Award",
@@ -371,6 +390,7 @@
       {
         "year": "2023–2024",
         "grade": "6th Grade",
+        "turning_point": true,
         "title": "The Spark",
         "paragraphs": [
           "My dad gave me an Arduino Starter Kit for my birthday. I started with a blinking LED, then buttons, sensors, and projects I found online. Most of them did not work the first time, but I loved seeing a few lines of code make something happen in the real world."
@@ -400,6 +420,10 @@
         ],
         "sections": []
       }
+    ],
+    "page_links": [
+      { "label": "See the projects this journey built →", "url": "/projects/" },
+      { "label": "Read the Build Log →", "url": "/blog.html" }
     ],
     "beliefs_title": "How I Approach Projects",
     "beliefs": [

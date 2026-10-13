@@ -17,9 +17,10 @@
       {% for item in nav_items %}
       <li><a href="/{{ item.url }}">{{ item.label }}</a></li>
       {% endfor %}
-      {% elif page == 'projects' and nav.get('projects_nav') is sequence %}
-      {# Projects index reuses the same approved label set with page-accurate destinations:
-         Journey = the actual Journey page, Beyond = its homepage section. #}
+      {% elif page in ['projects', 'about'] and nav.get('projects_nav') is sequence %}
+      {# Projects index and My Journey reuse the same approved label set with
+         page-accurate destinations: Journey = the actual Journey page,
+         Beyond = its homepage section. #}
       {% for item in nav.projects_nav %}
       <li><a href="{{ item.url }}">{{ item.label }}</a></li>
       {% endfor %}
@@ -50,7 +51,7 @@
       <a href="/{{ item.url }}">{{ item.label }}</a>
       {% endfor %}
       <a href="/#contact">{{ nav.cta.label }}</a>
-      {% elif page == 'projects' and nav.get('projects_nav') is sequence %}
+      {% elif page in ['projects', 'about'] and nav.get('projects_nav') is sequence %}
       {% for item in nav.projects_nav %}
       <a href="{{ item.url }}">{{ item.label }}</a>
       {% endfor %}
