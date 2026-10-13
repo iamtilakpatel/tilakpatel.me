@@ -27,9 +27,15 @@
   </div>
 
   <div class="cs-repo">
-    <p>{{ cse.related.get("repo_text", project.repo_text) }}</p>
+    {# Only render repository copy that is explicitly set per-project; never fall
+       back to the legacy repo_text, whose wording must be verified per repo. #}
+    {% if cse.related.get("repo_text") %}
+    <p>{{ cse.related.repo_text }}</p>
+    {% endif %}
     <div class="cs-links">
+      {% if project.get("repository_public", true) %}
       <a class="button secondary" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer">{{ project.repo_label | default(project.repo_url) }}</a>
+      {% endif %}
       <a class="text-link" href="/projects/">Back to Projects →</a>
     </div>
   </div>

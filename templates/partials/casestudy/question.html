@@ -1,9 +1,9 @@
-{% set cse = project.case %}
-<section class="section" id="question">
-  {% if cse.question.kicker %}<span class="cs-kicker">{{ cse.question.kicker }}</span>{% endif %}
-  <h2>{{ cse.question.heading }}</h2>
+{% set cse = chapter if chapter is defined else project.case.question %}
+<section class="section" id="{{ cse.anchor | default('question') }}">
+  {% if cse.kicker %}<span class="cs-kicker">{{ cse.kicker }}</span>{% endif %}
+  <h2>{{ cse.heading }}</h2>
   <div class="cs-chapter-intro prose">
-    {% for paragraph in cse.question.paragraphs %}
+    {% for paragraph in cse.paragraphs %}
     <p>{{ paragraph | safe }}</p>
     {% endfor %}
   </div>

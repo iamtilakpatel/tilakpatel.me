@@ -836,7 +836,200 @@
       "repo_title": "Repository",
       "repo_text": "Firmware, web controller, architecture, design decisions, and project documentation are available in the public repository.",
       "repo_url": "https://github.com/iamtilakpatel/ashtavakra",
-      "repo_label": "github.com/iamtilakpatel/ashtavakra"
+      "repo_label": "github.com/iamtilakpatel/ashtavakra",
+      "repository_public": false,
+      "case_study": true,
+      "case": {
+        "hero": {
+          "kicker": "ASHTAVAKRA · ROBOTICS",
+          "headline": "The LEGO question became a Wi-Fi-controlled robotic arm.",
+          "thesis": "A Wi-Fi-controlled 6-DoF robotic arm with custom firmware and a browser-based controller.",
+          "intro": "Started in 8th grade as a return to an old LEGO question — instead of assembling a kit, I built the mechanics, wrote the firmware, and programmed the controls myself.",
+          "status": "WORKING TODAY · controlled wirelessly from a phone or laptop, with no dedicated app installed.",
+          "placeholder": {
+            "title": "A real bench photo goes here.",
+            "note": "No renders or stand-in images on this page — only a photograph of the actual arm will fill this spot."
+          },
+          "repo_label": "GitHub repository ↗",
+          "jump": {
+            "label": "See the debugging breakthrough ↓",
+            "target": "#decision"
+          }
+        },
+        "question": {
+          "kicker": "01 · WHERE IT STARTED",
+          "heading": "It started with a LEGO grabber that couldn't bend.",
+          "anchor": "started",
+          "paragraphs": [
+            "In sixth grade, I built a grabber out of LEGO. It could reach and grip, but it couldn't really bend. That bothered me more than it probably should have — years later I still wanted a better answer to that one small missing joint.",
+            "In between came the basics: a blinking LED to start, then sensors, an Arduino car, and a first web page that could control servos from my phone.",
+            "In 8th grade I came back to the original question — instead of only asking how to build something <em>similar</em>, I decided to build the whole system myself: the mechanics, the electronics, and the programming."
+          ]
+        },
+        "build": {
+          "kicker": "02 · FROM A GRABBER TO AN ARM",
+          "heading": "Building it: mechanics, mappings, and my own control system.",
+          "anchor": "build",
+          "intro": "Ashtavakra is not built from a kit or run by one. I connected the electronics, wrote the firmware, and built the interface it runs on.",
+          "paragraphs": [
+            "The main controller is an Arduino UNO R4 WiFi, connected over I²C to an Emakefun Motor Driver V5.2 at address 0x60, which drives eight TD-8120MG servos — a six-degree-of-freedom arm plus a gripper, with one twin support servo on the lift.",
+            "The firmware is written in C++ for the parts that make it feel like one machine: per-servo offsets to fix horns that never sat perfectly straight, speed control, S-curve motion so joints glide instead of snap, a reset, and an emergency stop.",
+            "The browser controller is plain HTML, CSS, and JavaScript. It is the entire interface — no pre-built robotics app — and it talks to the UNO over Wi-Fi."
+          ]
+        },
+        "decision": {
+          "kicker": "03 · THE DEBUGGING BREAKTHROUGH",
+          "heading": "The Debugging Breakthrough",
+          "key_kicker": "THE BREAKTHROUGH · TEST, DON'T GUESS",
+          "key_heading": "A small I²C scanner answered the question my whole program couldn't.",
+          "intro": "After a fried board, a missing I²C device, and strange servo channels, I stopped changing code until something worked and started collecting evidence instead.",
+          "paragraphs": [
+            "When the motor driver went quiet, the answer was a small test, not more changes to the main program. I wrote a tiny I²C scanner — it found the board exactly where it was supposed to be, at address 0x60.",
+            "The same method caught the servo-horn misalignments too: one assumption at a time, then software offsets to calibrate each servo individually instead of repeatedly rebuilding the joints. Wire-by-wire checks along the way did the rest of the teaching."
+          ]
+        },
+        "process": {
+          "kicker": "04 · HOW IT WORKS",
+          "heading": "From a tap in the browser to a moving joint.",
+          "intro": "Every command follows one path through the system — simple on purpose, easy to trace when something goes wrong.",
+          "stages": [
+            {
+              "title": "CONTROL",
+              "text": "A browser interface I wrote in HTML, CSS, and JavaScript sends the command — from a phone or laptop, over Wi-Fi.",
+              "status": "built"
+            },
+            {
+              "title": "PROCESS",
+              "text": "An Arduino UNO R4 WiFi receives it and runs my motion-control firmware.",
+              "status": "built"
+            },
+            {
+              "title": "DRIVE",
+              "text": "Over I²C, the UNO drives an Emakefun Motor Driver V5.2 at address 0x60, which powers all eight servos.",
+              "status": "built"
+            },
+            {
+              "title": "MOVE",
+              "text": "The servos move the base, arm, wrist, and gripper while the firmware handles calibration, speed, and smooth motion.",
+              "status": "built"
+            }
+          ],
+          "cycle_note": "The control path is simple: Browser → Wi-Fi → Arduino UNO R4 WiFi → I²C Motor Driver → Servos → Robotic Arm.",
+          "spec_rows": [
+            {
+              "key": "Controller",
+              "value": "Arduino UNO R4 WiFi"
+            },
+            {
+              "key": "Servo driver",
+              "value": "Emakefun Motor Driver V5.2 at I²C address 0x60"
+            },
+            {
+              "key": "Actuation",
+              "value": "8× TD-8120MG servos"
+            },
+            {
+              "key": "Motion",
+              "value": "6-DoF arm + gripper · 7 user controls · 1 twin support servo"
+            },
+            {
+              "key": "Interface",
+              "value": "Custom HTML/CSS/JS browser controller"
+            },
+            {
+              "key": "Firmware",
+              "value": "C++ — servo offsets, speed control, S-curve motion, reset, emergency stop"
+            }
+          ]
+        },
+        "status": {
+          "kicker": "05 · WORKING TODAY · STILL IN DEVELOPMENT",
+          "heading": "Working today vs. still in development.",
+          "working_kicker": "WORKING TODAY",
+          "working_items": [
+            {
+              "strong": "Wi-Fi browser control",
+              "text": "the arm is operable wirelessly from a phone or laptop, with no dedicated app installed."
+            },
+            {
+              "strong": "Full six-degree motion",
+              "text": "arm, wrist, and gripper respond to seven browser controls plus a twin support servo."
+            },
+            {
+              "strong": "Firmware reliability",
+              "text": "per-servo calibration offsets, speed control, S-curve motion, reset, and an emergency stop."
+            }
+          ],
+          "dev_kicker": "IN DEVELOPMENT",
+          "dev_items": [
+            {
+              "strong": "Computer vision",
+              "text": "Grove Vision AI Module V2 and XIAO ESP32S3 exploration — object recognition is being worked on."
+            },
+            {
+              "strong": "Vision-guided behavior",
+              "text": "using what the arm senses to influence its own movement decisions is not integrated yet."
+            }
+          ],
+          "caveat": "Moving is not the same as seeing — the distinction between the two lists above matters, and I expect to keep updating it as the vision work progresses."
+        },
+        "lessons": {
+          "kicker": "06 · LESSONS & NEXT STEPS",
+          "heading": "What building it taught me",
+          "intro": "None of this came from a tutorial. It came from testing things one at a time until guessing stopped being an option.",
+          "items": [
+            {
+              "title": "Break problems into small tests",
+              "text": "A tiny I²C scanner, one servo brought up alone, each channel and assumption checked separately — every tangle that stopped me was really three smaller problems stacked on top of each other."
+            },
+            {
+              "title": "Software can fix physical problems",
+              "text": "Some servo horns were slightly misaligned. Instead of rebuilding the joints over and over, I added software offsets so each servo could be calibrated individually."
+            },
+            {
+              "title": "Build the whole system",
+              "text": "The hardest part was not making one servo move. It was getting mechanics, electronics, firmware, Wi-Fi, and the browser interface to work together reliably."
+            },
+            {
+              "title": "A prototype is not the same animal as the vision",
+              "text": "The arm that works today is still far from the arm I first imagined. Saying that out loud keeps the next steps honest — and the next steps real."
+            }
+          ],
+          "next_steps": "<strong>Next:</strong> finish the Vision AI exploration, then keep exploring how the arm can do simple tasks with less help from me — one testable step at a time. In parallel, a clear bench photo of the arm goes on this page."
+        },
+        "related": {
+          "kicker": "07 · CONTINUE EXPLORING",
+          "heading": "From the build log",
+          "intro": "I wrote these two notes during — and right after — the hardest stretch of debugging on Ashtavakra.",
+          "posts": [
+            {
+              "slug": "lego-grabber-to-robotic-arm",
+              "cta": "Read the build note →"
+            },
+            {
+              "slug": "robotic-arm-engineering-problems",
+              "cta": "Read the reflection →"
+            }
+          ]
+        },
+        "evidence_band": [
+          {
+            "strong": "6-DoF arm + gripper",
+            "text": "eight TD-8120MG servos with firmware calibration and smooth motion.",
+            "qualifier": "BUILT · working today"
+          },
+          {
+            "strong": "7 browser controls",
+            "text": "custom HTML/CSS/JS interface over Wi-Fi; no pre-built robotics app.",
+            "qualifier": "BUILT · working today"
+          },
+          {
+            "strong": "Vision AI",
+            "text": "Grove Vision AI Module V2 and XIAO ESP32S3 exploration for object recognition.",
+            "qualifier": "IN DEVELOPMENT · not integrated with arm movement yet"
+          }
+        ]
+      }
     }
   },
   "blog": {

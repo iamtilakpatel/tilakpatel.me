@@ -151,7 +151,7 @@
 </section>
 {% endif %}
 
-{% if project.repo_url %}
+{% if project.repo_url and project.get("repository_public", true) %}
 <section class="section">
   <div class="container">
     <h2 class="section-title">

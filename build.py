@@ -151,6 +151,31 @@ def copy_assets():
             shutil.copy2(src, dst)
 
 
+def guard_private_repo_links(html: str, data: dict) -> str:
+    """De-link any anchor that points to a non-public project repository.
+
+    Driven purely by the data schema: a project entry with
+    ``"repository_public": false`` has its ``repo_url`` suppressions applied to
+    every generated page (including blog-post bodies). Setting the flag back to
+    ``true`` (or removing it) restores the links on the next build.
+    """
+    import re
+
+    private_urls = [
+        p["repo_url"]
+        for p in (data.get("projects") or {}).values()
+        if isinstance(p, dict) and p.get("repo_url") and p.get("repository_public") is False
+    ]
+    for url in private_urls:
+        pattern = r'<a\s+href="' + re.escape(url) + r'"[^>]*>(.*?)</a>'
+        html = re.sub(
+            pattern,
+            lambda m: re.sub(r"\s*(?:→|↗|\u2192|\u2197)\s*$", "", m.group(1).strip()),
+            html,
+        )
+    return html
+
+
 def render_site(data, posts):
     env = Environment(
         loader=FileSystemLoader(TEMPLATES),
@@ -178,6 +203,7 @@ def render_site(data, posts):
             page=out_name.replace(".html", ""),
         )
 
+        html = guard_private_repo_links(html, data)
         (DIST / out_name).write_text(html, encoding="utf-8")
         print(f"  ✓ {out_name}")
 
@@ -191,7 +217,7 @@ def render_site(data, posts):
     # Keep the old URL working:
     # /projects.html
     (DIST / "projects.html").write_text(
-        projects_html,
+        guard_private_repo_links(projects_html, data),
         encoding="utf-8",
     )
     print("  ✓ projects.html")
@@ -202,7 +228,7 @@ def render_site(data, posts):
     projects_dir.mkdir(parents=True, exist_ok=True)
 
     (projects_dir / "index.html").write_text(
-        projects_html,
+        guard_private_repo_links(projects_html, data),
         encoding="utf-8",
     )
     print("  ✓ projects/index.html")
@@ -225,6 +251,7 @@ def render_site(data, posts):
             page="project",
             home_nav=is_case_study,
         )
+        html = guard_private_repo_links(html, data)
 
         (output_dir / "index.html").write_text(
             html,
@@ -243,6 +270,7 @@ def render_site(data, posts):
             page="post",
         )
 
+        html = guard_private_repo_links(html, data)
         (DIST / f"{post['slug']}.html").write_text(
             html,
             encoding="utf-8",
