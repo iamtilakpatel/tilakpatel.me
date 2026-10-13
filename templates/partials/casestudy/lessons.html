@@ -1,0 +1,28 @@
+{% set cse = project.case %}
+<section class="section" id="lessons">
+  {% if cse.lessons.kicker %}<span class="cs-kicker">{{ cse.lessons.kicker }}</span>{% endif %}
+  <h2>{{ cse.lessons.heading }}</h2>
+  {% if cse.lessons.get("intro") %}
+  <div class="cs-chapter-intro prose">
+    <p>{{ cse.lessons.intro }}</p>
+  </div>
+  {% endif %}
+
+  <div class="cs-lessons">
+    {% for lesson in cse.lessons['items'] %}
+    <div class="cs-lesson">
+      <span class="cs-lesson-num">L{{ '%02d' | format(loop.index) }}</span>
+      <div>
+        <h4>{{ lesson.title }}</h4>
+        <p>{{ lesson.text }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if cse.lessons.get("next_steps") %}
+  <div class="cs-chapter-intro prose cs-next">
+    <p>{{ cse.lessons.next_steps | safe }}</p>
+  </div>
+  {% endif %}
+</section>

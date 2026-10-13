@@ -1,0 +1,10 @@
+{% set cse = project.case %}
+<section class="section" id="question">
+  {% if cse.question.kicker %}<span class="cs-kicker">{{ cse.question.kicker }}</span>{% endif %}
+  <h2>{{ cse.question.heading }}</h2>
+  <div class="cs-chapter-intro prose">
+    {% for paragraph in cse.question.paragraphs %}
+    <p>{{ paragraph | safe }}</p>
+    {% endfor %}
+  </div>
+</section>

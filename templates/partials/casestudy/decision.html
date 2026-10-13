@@ -1,0 +1,17 @@
+{% set cse = project.case %}
+<section class="section" id="decision">
+  {% if cse.decision.kicker %}<span class="cs-kicker">{{ cse.decision.kicker }}</span>{% endif %}
+  <h2>{{ cse.decision.heading }}</h2>
+  {% if cse.decision.get("intro") %}
+  <div class="cs-chapter-intro prose">
+    <p>{{ cse.decision.intro }}</p>
+  </div>
+  {% endif %}
+  <div class="cs-key">
+    <span class="cs-kicker">{{ cse.decision.key_kicker }}</span>
+    <h3>{{ cse.decision.key_heading }}</h3>
+    {% for paragraph in cse.decision.paragraphs %}
+    <p>{{ paragraph | safe }}</p>
+    {% endfor %}
+  </div>
+</section>

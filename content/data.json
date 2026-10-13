@@ -536,7 +536,200 @@
       "repo_title": "Repository",
       "repo_text": "All firmware, schematics, 3D models, and documentation are open source.",
       "repo_url": "https://github.com/iamtilakpatel/aero-lite",
-      "repo_label": "github.com/iamtilakpatel/aero-lite"
+      "repo_label": "github.com/iamtilakpatel/aero-lite",
+      "case_study": true,
+      "case": {
+        "hero": {
+          "kicker": "AERO-LITE · SPACE SYSTEMS",
+          "headline": "How could astronauts manage CO₂ on the Moon?",
+          "thesis": "A regenerative CO₂ preprocessor concept for future lunar habitats — prototyped by an 8th grader on his desk.",
+          "intro": "I started AERO-LITE in mid-March 2026 after an email from Space Center Houston described a Carbon Capture Challenge. I had learned a little about electronics and robotics before this, but almost nothing about air chemistry. I decided to learn it the way I usually do: by building something real and seeing what it can actually prove.",
+          "award": "Top Individual Award · Middle School Division · NASA Carbon Capture Challenge 2026",
+          "photo": "/assets/images/aero-prototype.jpg",
+          "photo_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
+          "photo_caption": "Phase 1 prototype: three mason jars, a live ESP32-S3, and a dashboard updating every second.",
+          "figure_label": "FIG. 01 · THE ACTUAL PROTOTYPE",
+          "repo_label": "GitHub repository ↗",
+          "jump": {
+            "label": "Start with the decision that shaped it ↓",
+            "target": "#decision"
+          }
+        },
+        "evidence_band": [
+          {
+            "strong": "3 live CO₂ sensors",
+            "text": "observed in the Phase 1 prototype, updating every second via a web dashboard",
+            "qualifier": "OBSERVED · on the bench"
+          },
+          {
+            "strong": "1,029 → 477 ppm",
+            "text": "one recorded dashboard snapshot (cabin sensor → purified sensor)",
+            "qualifier": "OBSERVED · one specific reading, not validated capture efficiency"
+          },
+          {
+            "strong": "~0.99 lb/unit · ~8 W · 6:15",
+            "text": "early estimates for mass per unit, average power, and design cycle schedule",
+            "qualifier": "DESIGN TARGETS · estimated, not measured"
+          }
+        ],
+        "question": {
+          "kicker": "01 · THE PROBLEM",
+          "heading": "Why was a lunar habitat an interesting place to think about air?",
+          "paragraphs": [
+            "Space Center Houston's Carbon Capture Challenge asked students to think about how future Moon habitats would manage the CO₂ that people exhale — with limited power and mass. That constraint is what pulled me in: on Earth, fresh air solves most buildings' CO₂ problems. In a sealed habitat, you have to decide <strong>where the CO₂ actually goes</strong>.",
+            "The station-grade answer today is a big machine that vents CO₂ overboard. And everything I read about keeping people alive in a surface habitat comes back to the same idea: the air will be recycled, so each part of the system — capture, release, storage — becomes part of a loop, not a one-way stream.",
+            "I am not going to pretend an 8th grader solved habitat engineering. What I had was a question from people who run a real space center, three months to try something, and a habit: when I don't understand something, prototype it small and see what the numbers say."
+          ]
+        },
+        "decision": {
+          "kicker": "02 · THE DECISION",
+          "heading": "The calculation that changed AERO-LITE",
+          "intro": "My first concept looked elegantly simple: pull cabin air into a compressor, squeeze it, get a concentrated CO₂ stream. One stage instead of several. Less mass, fewer parts. I liked it so much I started sketching the compressor placement before doing the arithmetic.",
+          "key_kicker": "KEY DECISION · CAPTURE BEFORE COMPRESSION",
+          "key_heading": "Cabin air is mostly not CO₂ — so compressing it compresses mostly everything else.",
+          "paragraphs": [
+            "Cabin air is mostly nitrogen and oxygen. Squeezing it does not separate the components; it just makes harder-to-manage mixed gas. When I sat down with the composition, the \"one elegant stage\" stopped looking elegant — it would spend the project's energy on ~99% of the air that isn't CO₂.",
+            "So AERO-LITE reversed direction: <strong>capture CO₂ first</strong>, then — later in the design — compress a stream that is actually CO₂-rich. That single decision is why the prototype is a sorbent bed with sensors, not a compressor with plexiglass. The power and mass savings the redesign promises are estimates; testing them is exactly the work I have listed as unfinished."
+          ]
+        },
+        "process": {
+          "kicker": "03 · HOW IT WORKS",
+          "heading": "Four stages — two on the bench, two on paper",
+          "intro": "The concept is a four-stage loop. Honesty check before anything else: the first two stages exist as real hardware. The last two are design stages — the concept for them exists, the hardware outcome does not.",
+          "stages": [
+            {
+              "title": "DRY",
+              "text": "Silica gel strips moisture first — humidity kills CO₂ capture efficiency, so this stage has to come first.",
+              "status": "built"
+            },
+            {
+              "title": "TRAP",
+              "text": "A zeolite 13X bed captures CO₂ at room temperature; nitrogen and oxygen pass through. Three live sensors watch the result.",
+              "status": "built"
+            },
+            {
+              "title": "RELEASE",
+              "text": "Controlled heating would release the captured CO₂ for reuse. The first prototype only simulated heater control.",
+              "status": "planned"
+            },
+            {
+              "title": "COMPRESS",
+              "text": "A CO₂-rich stream would be compressed into a buffer tank for possible downstream use. Not built, not integrated.",
+              "status": "planned"
+            }
+          ],
+          "cycle_note": "Intended control schedule: ADSORB (~5 min) → REGEN (~1 min) → PURGE (~15 s), about 6 minutes 15 seconds total.",
+          "cycle_verdict": "This is a design setting, not a validated full regeneration-cycle measurement.",
+          "cycle_note_more": "The buffer tank idea is meant to smooth the intermittent output; that integration still needs to be tested.",
+          "spec_rows": [
+            {
+              "key": "Control",
+              "value": "ESP32-S3 DevKitC-1"
+            },
+            {
+              "key": "Sensor hub",
+              "value": "TCA9548A I²C multiplexer"
+            },
+            {
+              "key": "Sensors",
+              "value": "3× SCD41 — cabin, purified, tank"
+            },
+            {
+              "key": "Sorbents",
+              "value": "Silica gel (orange, indicating) · Zeolite 13X"
+            },
+            {
+              "key": "Stage 4 hardware",
+              "value": "CO₂ buffer tank with pressure sensor (concepted)"
+            },
+            {
+              "key": "Dashboard",
+              "value": "HTML/CSS/JS, polling JSON at 1 Hz"
+            }
+          ]
+        },
+        "evidence": {
+          "kicker": "04 · BUILDING, TESTING & EVIDENCE",
+          "heading": "What the prototype actually shows",
+          "intro": "I wanted the first build to be the least impressive possible version of the idea: jars, beads, sensors — not a rendering, not a sci-fi panel. A bench prototype can tell you whether a component behaves; it cannot yet tell you whether the whole loop is efficient.",
+          "photo_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
+          "photo_caption": "Three mason jars: silica gel, zeolite 13X, and a buffer-tank stand-in — with the live sensors between them.",
+          "figure_label": "FIG. 02 · THE BENCH",
+          "observed_kicker": "OBSERVED",
+          "observed_lead_strong": "One recorded dashboard snapshot:",
+          "observed_lead_text": "cabin sensor 1,029 ppm; purified sensor 477 ppm.",
+          "observed_paragraphs": [
+            "These readings illustrate live sensor output from real hardware. A single snapshot does not establish capture efficiency or sustained performance.",
+            "Reliable across the three sensors — including the I²C channel selection behind them — took its own debugging story."
+          ],
+          "designed_kicker": "DESIGNED (ESTIMATED)",
+          "designed_items": [
+            {
+              "strong": "~0.99 lb / unit",
+              "text": "— early mass estimate"
+            },
+            {
+              "strong": "~8 W average",
+              "text": "— estimated operating power"
+            },
+            {
+              "strong": "6:15 cycle",
+              "text": "— intended schedule"
+            },
+            {
+              "strong": "Regeneration amount & resulting CO₂ concentration",
+              "text": "— unmeasured"
+            }
+          ],
+          "missing_asset_label": "MISSING ASSET",
+          "missing_asset_text": "Dashboard screenshot (live UI frame). Not yet captured; deliberately shown as an explicit placeholder rather than fabricated — replaced here when a real screen capture exists.",
+          "pull_quote": "This is not a rendering. It is three mason jars on my desk, a live ESP32-S3, and a web dashboard that updates every second."
+        },
+        "lessons": {
+          "kicker": "05 · CHALLENGES, LESSONS & NEXT STEPS",
+          "heading": "What fought back — and what I'd test next",
+          "intro": "The hard parts weren't the ones I predicted. None of these lessons would have appeared in a slideshow; they only showed up at the bench.",
+          "items": [
+            {
+              "title": "Compression is not separation",
+              "text": "My original design rested on a mistake I didn't notice until I checked the composition of air. Squeezing mixed gas doesn't sort it. Catching this early cost me a week of sketches and saved the whole project — the numbers proved it, so I redesigned before building."
+            },
+            {
+              "title": "Three sensors that wouldn't answer",
+              "text": "The three SCD41 sensors sat behind an I²C multiplexer and kept going silent. The channel-mask math was right, but the code didn't always select the right channel before each read. Three days of testing assumptions one at a time fixed it — and I now write the intended channel selection right before every sensor communication."
+            },
+            {
+              "title": "Heat beats vacuum — for now",
+              "text": "For releasing CO₂ from the zeolite, a pressure-swing approach would use less energy. But vacuum seals on moving hardware in rough conditions are leak risks. A PTC heater with a bimetallic cutoff is the safer path for this prototype — even if the microcontroller crashed, the cutoff would remain. That trade-off is a design decision, not a proven result."
+            },
+            {
+              "title": "A dashboard is evidence, not a verdict",
+              "text": "Live readings made the project feel real — and I had to learn not to oversell them. One clean-looking number is a snapshot, not an efficiency measurement. Explaining that distinction to judges taught me as much as building it did."
+            }
+          ],
+          "next_steps": "<strong>Unfinished, on the record:</strong> repeatable regeneration (how much CO₂ actually comes back off the zeolite, at what concentration), compressor and buffer-tank integration, and controlled measurements of power and mass against those estimates. <strong>Next:</strong> build the regeneration stage for real, run controlled capture/release cycles with logged data, and replace the estimates above with measurements — even if the numbers get worse."
+        },
+        "related": {
+          "kicker": "06 · CONTINUE EXPLORING",
+          "heading": "From the build log",
+          "intro": "These notes cover the messier parts of this project — the calculation, the debugging, and what it took to explain it honestly.",
+          "posts": [
+            {
+              "slug": "capture-first-compress-later",
+              "cta": "Read the build note →"
+            },
+            {
+              "slug": "i2c-debugging-hell",
+              "cta": "Read the build note →"
+            },
+            {
+              "slug": "nasa-challenge-submission",
+              "cta": "Read the reflection →"
+            }
+          ],
+          "repo_text": "Firmware, system documentation, and competition materials are open source in the project repository."
+        }
+      }
     },
     "ashtavakra": {
       "tag": "Independent Robotics Project · 2026",

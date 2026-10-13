@@ -5,11 +5,17 @@
       <span class="brand-name" aria-hidden="true">{{ meta.author }}</span>
     </a>
     {% set is_home = (page == 'index') %}
-    {% set nav_items = (nav.home_anchors if is_home else nav.links) %}
+    {% set home_style_nav = is_home or (home_nav is defined and home_nav) %}
+    {% set nav_items = (nav.home_anchors if home_style_nav else nav.links) %}
     <ul class="nav-links">
       {% if is_home %}
       {% for item in nav_items %}
       <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+      {% elif home_style_nav %}
+      {# Case-study pages reuse the approved homepage label set (Projects · Build Log · Journey · Beyond) with home-rooted anchors. #}
+      {% for item in nav_items %}
+      <li><a href="/{{ item.url }}">{{ item.label }}</a></li>
       {% endfor %}
       {% else %}
       <li><a href="/index.html">Home</a></li>
@@ -33,6 +39,11 @@
       <a href="{{ item.url }}">{{ item.label }}</a>
       {% endfor %}
       <a href="#contact">{{ nav.cta.label }}</a>
+      {% elif home_style_nav %}
+      {% for item in nav_items %}
+      <a href="/{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+      <a href="/#contact">{{ nav.cta.label }}</a>
       {% else %}
       <a href="/index.html">Home</a>
       {% for item in nav_items %}

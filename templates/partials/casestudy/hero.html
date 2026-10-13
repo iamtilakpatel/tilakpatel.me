@@ -1,0 +1,46 @@
+{% set cse = project.case %}
+<section class="cs-hero" id="case-hero">
+  <svg class="cs-orbit" viewBox="0 0 800 520" fill="none" aria-hidden="true">
+    <g stroke="currentColor" stroke-width="1">
+      <ellipse cx="480" cy="200" rx="330" ry="128" stroke-dasharray="7 10" opacity=".5"/>
+      <ellipse cx="480" cy="200" rx="212" ry="86" opacity=".36"/>
+      <circle cx="480" cy="200" r="44" stroke-dasharray="3 6" opacity=".5"/>
+      <path d="M150 200h660M480 72v256" opacity=".22"/>
+      <circle cx="212" cy="148" r="4" stroke-dasharray="2 4"/>
+      <circle cx="620" cy="300" r="4"/>
+    </g>
+  </svg>
+  <div class="cs-hero-copy">
+    <span class="cs-kicker">{{ cse.hero.kicker }}</span>
+    <h1>{{ cse.hero.headline }}</h1>
+    <p class="cs-thesis">{{ cse.hero.thesis }}</p>
+    <p class="cs-intro">{{ cse.hero.intro }}</p>
+    <p class="award-note">
+      <svg viewBox="0 0 24 24" stroke-width="1.6" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z"/></svg>
+      {{ cse.hero.award }}
+    </p>
+    <div class="cs-cta-row">
+      <a class="button primary" href="{{ project.repo_url }}" target="_blank" rel="noopener noreferrer">{{ cse.hero.repo_label }}</a>
+      {% if cse.hero.get("jump") %}
+      <a class="text-link" href="{{ cse.hero.jump.target }}">{{ cse.hero.jump.label }}</a>
+      {% endif %}
+    </div>
+  </div>
+  <figure class="cs-hero-photo">
+    <span class="cs-fig-label">{{ cse.hero.figure_label }}</span>
+    <img src="{{ cse.hero.photo }}" alt="{{ cse.hero.photo_alt }}" />
+    <figcaption class="cs-photo-caption">{{ cse.hero.photo_caption }}</figcaption>
+  </figure>
+</section>
+
+<div class="cs-band" id="case-evidence-band">
+  <div class="cs-band-grid">
+    {% for nd in cse.evidence_band %}
+    <div class="cs-nd">
+      <strong>{{ nd.strong }}</strong>
+      {{ nd.text }}
+      <span class="cs-qual">{{ nd.qualifier }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>

@@ -208,18 +208,22 @@ def render_site(data, posts):
     print("  ✓ projects/index.html")
 
     # ── individual project detail pages ──
-    project_tmpl = env.get_template("project.html")
-
+    # Projects that opt into the approved case-study layout render through
+    # templates/casestudy.html (+ its partials); everything else keeps the
+    # legacy template unchanged until its own redesign is approved.
     for project in project_items:
         slug = project["slug"]
 
         output_dir = DIST / "projects" / slug
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        html = project_tmpl.render(
+        is_case_study = bool(project.get("case_study"))
+        tmpl = env.get_template("casestudy.html" if is_case_study else "project.html")
+        html = tmpl.render(
             **ctx,
             project=project,
             page="project",
+            home_nav=is_case_study,
         )
 
         (output_dir / "index.html").write_text(
