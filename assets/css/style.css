@@ -1869,3 +1869,165 @@ html[data-theme="light"] .case-project .cs-orbit { opacity: .08; }
   font-size: .84rem;
   line-height: 1.6;
 }
+
+/* ==========================================================================
+   18. PROJECTS INDEX (pjx-*, used only by projects.html / projects/)
+   Editorial feature presentation, generated from projects.<id>.index data.
+   No animations; consumes only existing tokens and components.
+   ========================================================================== */
+
+.pjx-intro {
+  max-width: 68ch;
+  margin-top: 18px;
+}
+.pjx-intro p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: .98rem;
+  line-height: 1.65;
+}
+
+.pjx-section { padding-top: 8px; }
+
+.pjx-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+  padding: clamp(40px, 6vw, 72px) 0;
+}
+.pjx-feature + .pjx-feature {
+  border-top: 1px solid var(--line);
+}
+
+/* Alternate the image side for each successive project so the page reads
+   as an editorial spread, not a card wall. */
+.pjx-feature--flip .pjx-visual { order: 2; }
+
+.pjx-visual {
+  position: relative;
+  min-height: 440px;
+  max-height: 520px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  overflow: hidden;
+}
+.pjx-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pjx-hold {
+  position: absolute;
+  inset: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.pjx-hold svg { width: 100%; max-width: 320px; height: auto; color: var(--accent); }
+
+.pjx-copy { min-width: 0; }
+.pjx-copy .figure-label { display: block; margin-bottom: 14px; }
+.pjx-copy h2 {
+  margin: 0 0 16px;
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -.015em;
+}
+.pjx-desc {
+  margin: 0 0 20px;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.65;
+}
+
+.pjx-highlights {
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+.pjx-highlights li {
+  position: relative;
+  margin: 0;
+  padding: 9px 0 9px 20px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .78rem;
+  line-height: 1.55;
+}
+.pjx-highlights li + li { border-top: 1px dashed var(--line); }
+.pjx-highlights li::before {
+  content: "▾";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  color: var(--accent);
+  font-size: .72rem;
+}
+
+.pjx-status {
+  margin: 0 0 26px;
+}
+.pjx-status-chip {
+  display: inline-block;
+  margin-right: 12px;
+  padding: 4px 10px;
+  font-family: var(--mono);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+.pjx-status-note {
+  display: block;
+  margin-top: 8px;
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .68rem;
+  line-height: 1.5;
+}
+
+.pjx-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 22px;
+}
+.pjx-links .button { width: auto; }
+
+.pjx-more .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  padding-top: 8px;
+}
+
+@media (max-width: 940px) {
+  .pjx-feature {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .pjx-visual,
+  .pjx-feature--flip .pjx-visual {
+    order: -1;
+    min-height: 280px;
+    max-height: 380px;
+  }
+  .pjx-hold { inset: 14px; }
+}
+
+@media (max-width: 480px) {
+  .pjx-visual,
+  .pjx-feature--flip .pjx-visual {
+    min-height: 220px;
+    max-height: 300px;
+  }
+  .pjx-links .button { width: 100%; }
+}

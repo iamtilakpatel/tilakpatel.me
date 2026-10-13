@@ -19,11 +19,17 @@
         "label": "Projects",
         "url": "/projects.html"
       },
-      {
-        "label": "Build Log",
-        "url": "/blog.html"
-      }
-    ],
+    {
+      "label": "Build Log",
+      "url": "/blog.html"
+    }
+  ],
+    "projects_nav": [
+    { "label": "Projects", "url": "/projects/" },
+    { "label": "Build Log", "url": "/blog.html" },
+    { "label": "Journey", "url": "/about.html" },
+    { "label": "Beyond", "url": "/#beyond" }
+  ],
     "home_anchors": [
       {
         "label": "Projects",
@@ -432,10 +438,32 @@
   "projects": {
     "page_title": "Projects",
     "page_subtitle": "Not everything here is finished. That is the point.",
+    "index_kicker": "SELECTED WORK",
+    "index_intro": [
+      "Every project here started as a question I could not put down — not an assignment.",
+      "I document the experiments, the problems, and the wrong first drafts, because that is where the engineering actually happens. Each project below links to a longer story: what I built, what broke, and what I had to unlearn along the way."
+    ],
     "aero_lite": {
       "tag": "NASA Carbon Capture Challenge 2026",
       "title": "AERO-LITE",
       "subtitle": "A regenerative CO₂ preprocessor for lunar habitats. Started mid-March 2026 after an email from Space Center Houston. Built by an 8th grader.",
+      "index": {
+        "domain": "SPACE SYSTEMS · CO₂ MANAGEMENT",
+        "question": "How could astronauts manage CO₂ on the Moon?",
+        "status": "BUILT · WORKING TODAY",
+        "status_note": "Prototype is real hardware with live readings · the full regeneration cycle still needs testing",
+        "highlights": [
+          "Live 3-sensor CO₂ dashboard at 1 Hz — real hardware, not a rendering",
+          "Regenerative concept: dry → trap → (planned) release and reuse of the sorbent",
+          "Top Individual Award · Middle School Division · NASA Carbon Capture Challenge 2026"
+        ],
+        "image": "/assets/images/aero-prototype.jpg",
+        "image_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
+        "links": [
+          { "label": "Explore the project →", "url": "projects/aero-lite", "style": "text-link" },
+          { "label": "Firmware + documentation ↗", "url": "https://github.com/iamtilakpatel/aero-lite", "style": "button" }
+        ]
+      },
       "prototype_image": "https://raw.githubusercontent.com/iamtilakpatel/aero-lite/main/media/photos/prototype-phase1.jpg",
       "prototype_image_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
       "stats": [
@@ -735,6 +763,23 @@
       "tag": "Independent Robotics Project · 2026",
       "title": "Ashtavakra Robotic Arm",
       "subtitle": "A Wi-Fi-controlled 6-DoF robotic arm with custom firmware and a browser-based controller. Started in 8th grade and still evolving in high school.",
+      "index": {
+        "domain": "ROBOTICS · FIRMWARE · CONTROLS",
+        "question": "The LEGO question became a Wi-Fi-controlled robotic arm.",
+        "status": "BUILT · WORKING TODAY",
+        "status_note": "Wi-Fi browser control works · the computer-vision layer is still in development",
+        "highlights": [
+          "Arduino UNO R4 WiFi + 8 × TD-8120MG servos through an Emakefun motor driver",
+          "Custom firmware: per-servo offsets, speed control, S-curve motion, emergency stop",
+          "Browser controller over Wi-Fi — no pre-built robotics app"
+        ],
+        "placeholder_title": "REAL BENCH PHOTO TO ADD",
+        "placeholder_note": "The final site should use a real photograph of the working arm on the bench.",
+        "links": [
+          { "label": "Explore the project →", "url": "projects/ashtavakra", "style": "text-link" },
+          { "label": "GitHub ↗", "url": "https://github.com/iamtilakpatel/ashtavakra", "style": "button" }
+        ]
+      },
       "prototype_image": "/assets/images/project-placeholder.jpg",
       "prototype_image_alt": "Ashtavakra robotic arm with multiple servo-driven joints and gripper",
       "stats": [

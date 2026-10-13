@@ -7,60 +7,92 @@
 
 <header class="page-header">
   <div class="container">
+    <span class="figure-label">{{ projects.get("index_kicker") | default("SELECTED WORK") }}</span>
     <h1>{{ projects.page_title }}</h1>
     <p class="subtitle">{{ projects.page_subtitle }}</p>
+    <div class="pjx-intro">
+      {% for paragraph in projects.get("index_intro", []) %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
   </div>
 </header>
 
-<section class="section">
+<section class="section pjx-section">
   <div class="container">
-    <div class="project-cards">
 
-      {% for project in project_items %}
-      <div class="project-card">
+    {# ── Featured projects ──────────────────────────────────────────────────
+       Every feature is generated from the per-project data in data.json
+       (`projects.<id>.index`). No project is hardcoded; a future project
+       needs only a new entry with an `index` block. The visual treatment
+       alternates automatically by loop position; projects without a real
+       photo get the honest schematic placeholder. #}
+    {% for project in project_items %}
+    {% set idx = project.get("index") or {} %}
+    {% set has_photo = idx.get("image") %}
 
-        {% if project.prototype_image %}
-        <div class="project-card-image-wrap">
-          <img
-            src="{{ project.prototype_image }}"
-            alt="{{ project.prototype_image_alt | default(project.title) }}"
-            class="project-card-image"
-          />
-        </div>
-        {% else %}
-        <div class="project-card-placeholder">
+    <article class="pjx-feature{% if loop.index is even %} pjx-feature--flip{% endif %}" id="pj-{{ project.slug }}">
+      <div class="pjx-visual">
+        {% if has_photo %}
         <img
-          src="/assets/images/project-placeholder.jpg"
-          alt="{{ project.title }} project image coming soon"
+          src="{{ idx.image }}"
+          alt="{{ idx.get("image_alt") | default(project.title) }}"
+          class="pjx-photo"
         />
+        {% else %}
+        <div class="arm-photo-placeholder pjx-hold">
+          {% include "art/arm-schematic.html" %}
+          <strong>{{ idx.get("placeholder_title") | default("REAL PHOTO TO ADD") }}</strong>
+          <span>{{ idx.get("placeholder_note") | default("A real photograph of this project on the bench will replace this placeholder.") }}</span>
         </div>
         {% endif %}
-
-        {% if project.tag %}
-        <div class="card-tag tag-{{ project.tag_color | default('blue') }}">
-          {{ project.tag }}
-        </div>
-        {% endif %}
-
-        <h3>{{ project.title }}</h3>
-
-        {% if project.description %}
-        <p>{{ project.description }}</p>
-        {% elif project.subtitle %}
-        <p>{{ project.subtitle }}</p>
-        {% endif %}
-
-        <a
-          href="{{ base_path | default('') }}projects/{{ project.slug }}/"
-          class="card-link"
-        >
-          {{ project.link_text | default("View project details →") }}
-        </a>
-
       </div>
-      {% endfor %}
 
-    </div>
+      <div class="pjx-copy">
+        <span class="figure-label">{{ idx.get("domain") | default(project.tag) }}</span>
+        <h2>{{ idx.get("question") | default(project.title) }}</h2>
+        <p class="pjx-desc">{{ project.subtitle }}</p>
+
+        {% if idx.get("highlights") %}
+        <ul class="pjx-highlights" aria-label="Verified {{ project.title }} highlights">
+          {% for h in idx.highlights %}
+          <li>{{ h }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if idx.get("status") %}
+        <p class="pjx-status">
+          <span class="pjx-status-chip">{{ idx.status }}</span>
+          {% if idx.get("status_note") %}<span class="pjx-status-note">{{ idx.status_note }}</span>{% endif %}
+        </p>
+        {% endif %}
+
+        <div class="pjx-links">
+          {% for l in idx.get("links", []) %}
+          {# Respect per-project repository visibility; hide links that point
+             at a non-public repository. AERO-LITE (public) is unaffected. #}
+          {% set lurl = l.url | string %}
+          {% if not (project.get("repository_public") == false and project.get("repo_url") and lurl == project.repo_url) %}
+          <a
+            class="{% if l.get("style") == "button" %}button secondary{% else %}text-link{% endif %}"
+            href="{{ lurl }}"
+            {% if lurl.startswith("http") %}target="_blank" rel="noreferrer"{% endif %}
+          >{{ l.label }}</a>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+
+  </div>
+</section>
+
+<section class="section pjx-more">
+  <div class="container">
+    <a class="text-link" href="/">← Back to the homepage</a>
+    <a class="text-link" href="/#build-log">Continue to the Build Log →</a>
   </div>
 </section>
 

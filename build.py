@@ -117,6 +117,8 @@ def collect_projects(data):
     Convert the projects object in data.json into a renderable list.
 
     page_title and page_subtitle are page-level metadata, not projects.
+    Page-level settings (index_kicker, index_intro, …) and any non-object
+    value are skipped as well, so new page metadata can be added freely.
     Each project can optionally define its own slug. If omitted, the
     data.json key is converted from underscores to hyphens.
     """
@@ -125,6 +127,8 @@ def collect_projects(data):
 
     for project_id, project in projects_data.items():
         if project_id in ("page_title", "page_subtitle"):
+            continue
+        if not isinstance(project, dict) or project_id.startswith("index_"):
             continue
 
         item = dict(project)
