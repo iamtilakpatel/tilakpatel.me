@@ -2,7 +2,7 @@
 date: May 2026
 title: Submitting AERO-LITE to NASA
 tags: [NASA, Competition, Storytelling]
-excerpt: 8 slides, and a prototype that tweets CO₂ data. What I learned about telling a technical story to judges who see 50 decks a day. Also: why you should never claim 90% efficiency if you have not measured it yet.
+excerpt: Eight slides and a prototype with live CO₂ readings. What I learned about explaining a technical project without exaggerating what my first prototype actually proved.
 slug: nasa-challenge-submission
 ---
 
@@ -20,13 +20,15 @@ I asked AI to help me write the first draft of my presentation. Big mistake. It 
 
 ## The Numbers Have to Match
 
-My firmware had placeholder timing (10/10/2 minutes). My slides said 5/1/15 seconds. My architecture docs said ~80/20 split. A judge who clicks my GitHub repo would see three different stories.
+My firmware had placeholder timing (10/10/2 minutes). My slides and architecture notes described a different schedule. A judge who opened my GitHub repo could have seen conflicting versions of how the system was supposed to operate.
 
-I fixed the firmware to match the intended design: 5 minutes / 1 minute / 15 seconds. Then I fixed the slides. Then I triple-checked every claim. If you say "90% capture efficiency" and your prototype uses LED-simulated heaters, you better say "target: 90%, Phase 2 validation pending."
+I updated the firmware settings and slides to describe the same **intended cycle**: approximately **5 minutes of adsorption, 1 minute of regeneration, and 15 seconds of purging**. That adds up to **6 minutes 15 seconds**, not exactly 6 minutes. These were design timings, **not a measured result from a fully validated capture-and-regeneration cycle**.
+
+Then I triple-checked the claims. My early prototype used LEDs to simulate parts of the heater-control sequence; that is not the same as demonstrating repeated thermal regeneration. If I mentioned **90% capture efficiency**, I had to label it as a **design target requiring future validation**, not a measured result.
 
 ## The Photo Is Everything
 
-Most middle school submissions are drawings or CAD renders. I have a photo of three mason jars with a live dashboard showing 1,029 ppm → 477 ppm. That photo is my secret weapon. It says "this kid actually built something" without me having to say it.
+Most middle school submissions are drawings or CAD renders. I had a photo of three mason jars and a live dashboard. In one recorded view, the **Cabin sensor showed 1,029 ppm** and the **Purified sensor showed 477 ppm**. Those are useful readings from that test setup, but one observation does **not** establish capture efficiency or prove sustained performance. The photo still matters because it shows that I built real hardware and could read data from it.
 
 ## What I Would Do Differently
 
@@ -68,5 +70,5 @@ The repo is public. The build log is documented. And I no longer have to end thi
 
 This is what happened.
 
-**[Watch the ceremony →](link-to-your-video)**  
+**[Watch the ceremony →](https://github.com/iamtilakpatel/aero-lite/blob/main/media/videos/NASA_Challenge_Winner_Announcement.mp4)**  
 **[GitHub repo →](https://github.com/iamtilakpatel/aero-lite)**

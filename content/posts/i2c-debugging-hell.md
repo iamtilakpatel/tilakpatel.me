@@ -2,11 +2,11 @@
 date: May 2026
 title: Three Days in I²C Debugging Hell
 tags: [ESP32, I2C, Debugging]
-excerpt: The SCD41 would not show up on the scanner. I checked wiring, pull-ups, addresses, and nearly gave up. Then I realized the multiplexer channel mask was wrong. A story about patience, Serial Monitor, and why sleep matters.
+excerpt: My three SCD41 sensors were not responding reliably through the I²C multiplexer. The channel-mask calculation was correct, but my code was not consistently selecting the right channel before sensor reads. A story about testing assumptions, the Serial Monitor, and why sleep matters.
 slug: i2c-debugging-hell
 ---
 
-It was supposed to be simple. Three SCD41 CO₂ sensors, one TCA9548A multiplexer, one ESP32-S3. Turn it on, scan the bus, see three devices. Instead I saw: **❌ NO DEVICES FOUND.**
+It was supposed to be simple. Three SCD41 CO₂ sensors, one TCA9548A multiplexer, one ESP32-S3. Select each multiplexer channel, scan for its sensor, and get three responses. Instead I kept seeing: **❌ NO DEVICES FOUND.**
 
 ## Day 1: It Is the Wiring
 
@@ -26,17 +26,15 @@ I went to bed frustrated.
 
 ## Day 3: The Multiplexer
 
-I sat down with the TCA9548A datasheet and read it line by line. The control register expects a channel mask: 0x01 for channel 0, 0x02 for channel 1, 0x04 for channel 2.
+I sat down with the TCA9548A datasheet and read it line by line. Its control register uses a bit mask to select channels: `0x01` for channel 0, `0x02` for channel 1, and `0x04` for channel 2.
 
-My code said: `Wire.write(1 << ch);`
+My code used `Wire.write(1 << ch);`. That calculation was correct. For `ch = 0, 1, 2`, it produces exactly those values.
 
-That should work. 1 << 0 = 0x01. 1 << 1 = 0x02. 1 << 2 = 0x04. Perfect, right?
+So the **mask formula was not the bug**. The problem was how my code used the selected channel. My initialization and sensor-reading paths did not always agree about which channel should be active. I had been relying on a channel selection made elsewhere in the program instead of ensuring the correct sensor channel was selected when I needed it.
 
-Except... I was calling `tcaSelect(ch)` with `ch = 0, 1, 2` for my three sensors. But somewhere in my init code, I had a copy-paste error where I was passing the wrong variable. One sensor init was calling `tcaSelect(0)` but then talking to the library as if it was on a different channel.
+I changed the code to select the intended channel right before communicating with its sensor. I also checked the sensor operations one at a time instead of treating the whole three-sensor setup as one problem.
 
-The mux was switching to channel 0, but my SCD41 library call was trying to read from the default bus without re-selecting the channel afterward. The channel got reset between the mux select and the sensor read.
-
-I fixed it by making `tcaSelect()` part of every single read and write. No assumptions. The sensor read function now looks like:
+The relevant part of the sensor-reading code looked like this:
 
 ```cpp
 tcaSelect(0);
@@ -58,6 +56,6 @@ I yelled. My mom knocked on my door to make sure I was okay.
 
 ## What I Learned
 
-- **Never assume the bus state.** Always re-select the mux channel before every transaction.
+- **Do not assume which mux channel is active.** Select the intended channel before communicating with its sensor. The bit-mask formula can be correct while the wrong channel is selected in the rest of the code.
 - **Sleep matters.** Day 1 and Day 2 I was exhausted and chasing wrong theories. Day 3 I was rested and found it in an hour.
 - **The Serial Monitor is your best friend.** Add debug prints. Lots of them. You can remove them later.

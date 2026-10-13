@@ -1,63 +1,177 @@
-{% extends "base.html" %} {% block title %}{{ meta.author }} — Turning Curiosity Into Things That Work{% endblock %} {% block body_page %}home{% endblock %} {% block
-content %}
-<header class="hero">
-  <div class="hero-content">
-    <p class="hero-label">{{ home.label }}</p>
-    <div class="hero-avatar">
-      <img src="assets/images/tilak-avatar.png" alt="Tilak Patel" />
-    </div>
-    <h1>{{ home.title }}</h1>
-    <p class="hero-subtitle">{{ home.subtitle }}</p>
-    <div class="hero-buttons">
-      {% for btn in home.buttons %}
-      <a
-        href="{{ btn.url }}"
-        class="btn btn-{% if btn.style == 'primary' %}primary{% else %}secondary{% endif %}"
-        >{{ btn.label }}</a
-      >
+{% extends "base.html" %}
+{% block title %}{{ meta.author }} — Student Engineer{% endblock %}
+{% block body_page %}home{% endblock %}
+{% block content %}
+
+<section class="section hero" aria-labelledby="hero-title">
+  {% include "art/hero-orbit.html" %}
+  <div class="hero-copy reveal">
+    <p class="hero-greeting">{{ home.hero.greeting }}</p>
+    <h1 id="hero-title"><span class="name-first">{{ home.hero.name_first }}</span><span class="name-last">{{ home.hero.name_last }}</span></h1>
+    <p class="hero-role">{{ home.hero.role_start }}<span class="accent">{{ home.hero.role_accent }}</span></p>
+    <p class="tagline">{{ home.hero.tagline }}</p>
+    <p class="hero-intro">{{ home.hero.intro }}</p>
+    <div class="cta-row">
+      {% for btn in home.hero.buttons %}
+      <a class="button {{ btn.style }}" href="{{ btn.url }}">{{ btn.label }}<span class="arrow" aria-hidden="true">{{ btn.arrow }}</span></a>
       {% endfor %}
     </div>
   </div>
-</header>
 
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">{{ home.projects_section_title }}</h2>
-    <div class="project-cards">
-      {% for p in home.projects %}
-      <div class="project-card">
-        <div class="card-tag tag-{{ p.tag_color }}">{{ p.tag }}</div>
-        <h3>{{ p.title }}</h3>
-        <p>{{ p.description }}</p>
-        {% if p.link %}
-        <a href="{{ p.link }}" class="card-link">{{ p.link_text }}</a>
-        {% else %}
-        <span class="card-link-soon">{{ p.link_text }}</span>
-        {% endif %}
+  <figure class="hero-photo reveal">
+    <img src="{{ home.hero.photo }}" alt="{{ home.hero.photo_alt }}" width="1600" height="1200" fetchpriority="high" />
+  </figure>
+</section>
+
+<section class="section" id="projects" aria-labelledby="projects-title">
+  <header class="section-heading reveal">
+    <h2 id="projects-title">{{ home.featured.heading }}</h2>
+    <p class="section-note">{{ home.featured.note }}</p>
+  </header>
+
+  <div class="project-grid">
+    {% for p in home.projects %}
+    <article class="tech-card project-card {% if p.flagship %}flagship{% endif %} reveal" id="{{ p.id }}">
+      {% if p.image %}
+      <div class="project-visual photo-led">
+        <img class="project-photo" src="{{ p.image }}" alt="{{ p.image_alt }}" width="1800" height="1350" loading="lazy" />
+        <span class="photo-caption">{{ p.image_caption }}</span>
       </div>
+      {% else %}
+      <div class="project-visual" aria-label="Schematic placeholder pending a real build photograph">
+        <div class="arm-photo-placeholder">
+          {% include "art/arm-schematic.html" %}
+          <strong>ASHTAVAKRA BUILD PHOTO TO ADD</strong>
+          <span>The final site should use a real photograph of the working arm on the bench.</span>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="project-body">
+        <div class="figure-label">{{ p.label }}</div>
+        {% if p.award_note %}
+        <div class="award-note">{{ p.award_note }}</div>
+        {% endif %}
+        {% if p.note %}
+        <div class="award-note project-note">{{ p.note }}</div>
+        {% endif %}
+        <h3>{{ p.headline }}</h3>
+        <div class="project-story">
+          <p>{{ p.description }}</p>
+        </div>
+        <div class="project-stats" aria-label="Verified {{ p.id }} project facts">
+          {% for s in p.stats %}
+          <span><strong>{{ s.num }}</strong>{{ s.text }}{% if s.qualifier %}<em class="stat-qualifier">{{ s.qualifier }}</em>{% endif %}</span>
+          {% endfor %}
+        </div>
+        <div class="card-links">
+          {% for l in p.links %}
+          <a class="text-link" href="{{ l.url }}" {% if l.url.startswith('http') %}target="_blank" rel="noreferrer"{% endif %}>{{ l.label }}</a>
+          {% endfor %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section" id="build-log" aria-labelledby="log-title">
+  {% include "art/build-log-schematic.html" %}
+  <header class="section-heading reveal">
+    <h2 id="log-title">{{ home.build_log.heading }}</h2>
+    <p class="section-note">{{ home.build_log.intro }}</p>
+  </header>
+  <div class="article-list">
+    {% for c in home.build_log.cards %}
+    <article class="article-card reveal">
+      <div class="card-meta">{{ c.category | upper }}</div>
+      <h3><a href="{{ c.url }}">{{ c.headline }}</a></h3>
+      <p>{{ c.excerpt }}</p>
+      <div class="article-side">
+        <span class="tag">{{ c.tag }}</span>
+        <a class="text-link" href="{{ c.url }}">{{ c.link_label }}</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <div class="block-list-more">
+    <a class="text-link" href="{{ home.build_log.all_link.url }}">{{ home.build_log.all_link.label }}</a>
+  </div>
+</section>
+
+<section class="section" id="timeline" aria-labelledby="timeline-title">
+  {% include "art/journey-schematic.html" %}
+  <div class="timeline-layout">
+    <header class="timeline-intro reveal">
+      <h2 id="timeline-title">{{ home.journey.heading }}</h2>
+      <p>{{ home.journey.subtitle }}</p>
+      <a class="text-link journey-link" href="{{ home.journey.link.url }}">{{ home.journey.link.label }}</a>
+    </header>
+    <div class="timeline">
+      {% for m in home.journey.milestones %}
+      <article class="timeline-item {{ m.status }} reveal">
+        {% if not loop.last %}<span class="timeline-track" aria-hidden="true"></span>{% endif %}
+        <div class="timeline-date">{{ m.date }}</div>
+        <span class="status-chip {{ m.status }}">{{ m.status_label }}</span>
+        <h3>{{ m.title }}</h3>
+        <p>{{ m.text }}</p>
+      </article>
       {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">{{ home.blog_section_title }}</h2>
-    <p class="section-intro">{{ home.blog_intro }}</p>
-    <div class="blog-list">
-      {% for post in posts[:3] %}
-      <article class="blog-card">
-        <span class="blog-date">{{ post.date }}</span>
-        <h2><a href="{{ post.slug }}.html">{{ post.title }}</a></h2>
-        <p class="blog-excerpt">{{ post.excerpt }}</p>
-        {% for tag in post.tags %}
-        <span class="blog-tag">{{ tag }}</span>
-        {% endfor %}
-      </article>
+<section class="section" id="beyond" aria-labelledby="beyond-title">
+  {% include "art/beyond-schematic.html" %}
+  <header class="section-heading reveal">
+    <h2 id="beyond-title">{{ home.beyond.heading }}</h2>
+    <p class="section-note">{{ home.beyond.note }}</p>
+  </header>
+  <div class="beyond-panel reveal">
+    <p class="beyond-quote">{{ home.beyond.quote }}</p>
+    <div class="beyond-copy">
+      {% for paragraph in home.beyond.paragraphs %}
+      <p>{{ paragraph }}</p>
       {% endfor %}
     </div>
-    <div class="center">
-      <a href="blog.html" class="btn btn-secondary">All Blog Posts</a>
+  </div>
+</section>
+
+<section class="section" id="how-i-build" aria-labelledby="how-i-build-title">
+  {% include "art/process-schematic.html" %}
+  <header class="section-heading reveal">
+    <h2 id="how-i-build-title">{{ home.how_i_build.heading }}</h2>
+    <p class="section-note">{{ home.how_i_build.note }}</p>
+  </header>
+  <div class="toolbox-grid reveal">
+    {% for g in home.how_i_build.groups %}
+    <article class="tool-group">
+      <span class="tool-number">{{ g.number }}</span>
+      <h3>{{ g.title }}</h3>
+      <p>{{ g.text }}</p>
+      <div class="tool-list">
+        {% for chip in g.chips %}<span>{{ chip }}</span>{% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="how-more reveal">
+    <a class="text-link" href="{{ home.how_i_build.more_link.url }}">{{ home.how_i_build.more_link.label }}</a>
+  </p>
+</section>
+
+<section class="contact reveal" id="contact" aria-labelledby="contact-title">
+  <div class="contact-inner">
+    <div>
+      <div class="eyebrow">{{ home.contact.eyebrow }}</div>
+      <h2 id="contact-title">{{ home.contact.heading }}</h2>
+      <span class="email-obfuscated">{{ home.contact.email_display }}</span>
+      <a class="email-plain" href="mailto:{{ home.contact.email }}">{{ home.contact.email }}</a>
+      <p class="copy-status" aria-live="polite"></p>
+    </div>
+    <div class="contact-actions">
+      <button class="button primary copy-email" type="button">{{ home.contact.copy_label }}</button>
+      <a class="button secondary" href="{{ home.contact.github_url }}" target="_blank" rel="noreferrer">{{ home.contact.github_label }}</a>
     </div>
   </div>
 </section>

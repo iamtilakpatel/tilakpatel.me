@@ -20,10 +20,32 @@
         "url": "/projects.html"
       },
       {
-        "label": "Blog",
+        "label": "Build Log",
         "url": "/blog.html"
       }
-    ]
+    ],
+    "home_anchors": [
+      {
+        "label": "Projects",
+        "url": "#projects"
+      },
+      {
+        "label": "Build Log",
+        "url": "#build-log"
+      },
+      {
+        "label": "Journey",
+        "url": "#timeline"
+      },
+      {
+        "label": "Beyond",
+        "url": "#beyond"
+      }
+    ],
+    "cta": {
+      "label": "Contact",
+      "url": "/#contact"
+    }
   },
   "footer": {
     "line1": "Student · Builder · Aspiring Aerospace Engineer",
@@ -40,175 +62,372 @@
     ]
   },
   "home": {
-    "label": "",
-    "title": "Hi, I'm Tilak.",
-    "subtitle": "I am a teenager who would rather take something apart than read the manual. I believe engineering is not about getting it right the first time — it is about building publicly, failing visibly, and documenting every wrong turn so the next person does not have to start from zero. This site is that documentation.",
-    "buttons": [
-      {
-        "label": "See My Projects",
-        "url": "projects.html",
-        "style": "primary"
-      },
-      {
-        "label": "Read My Story",
-        "url": "about.html",
-        "style": "secondary"
-      }
-    ],
-    "projects_section_title": "What I Am Working On",
+    "hero": {
+      "greeting": "Hi, I'm",
+      "name_first": "Tilak",
+      "name_last": "Patel",
+      "role_start": "I like finding out why things work — ",
+      "role_accent": "then building a better version.",
+      "tagline": "Freshman · St. Charles North High School · Class of 2030",
+      "intro": "In sixth grade, I built a LEGO grabber that could reach and grip, but couldn't bend the way I wanted. That question stayed with me. Today, I'm building robots and exploring engineering questions about life in space. This is where I share what I build, what goes wrong, and what I learn along the way.",
+      "photo": "/assets/images/hero-photo.jpg",
+      "photo_alt": "Tilak Patel",
+      "buttons": [
+        {
+          "label": "Explore My Projects",
+          "url": "#projects",
+          "style": "primary",
+          "arrow": "↓"
+        },
+        {
+          "label": "Read My Story",
+          "url": "#timeline",
+          "style": "secondary",
+          "arrow": "↘"
+        }
+      ]
+    },
+    "featured": {
+      "heading": "Featured Engineering",
+      "note": "Not everything here is finished. That is the point."
+    },
     "projects": [
       {
-        "tag": "NASA Top Individual Award Winner",
-        "slug": "aero-lite",
-        "tag_color": "winner",
-        "title": "AERO-LITE",
-        "description": "A regenerative CO₂ preprocessor for lunar habitats. I started this in mid-March 2026 after an email from the STEM Innovation Team at Space Center Houston. Three months later I had a working prototype with live sensors and a web dashboard — and won Top Individual Award in the national middle school section.",
-        "link": "projects/aero-lite",
-        "link_text": "Read the build log →"
+        "id": "aero-lite",
+        "flagship": true,
+        "label": "AERO-LITE · SPACE SYSTEMS",
+        "award_note": "Top Individual Award · Middle School Division · NASA Carbon Capture Challenge 2026",
+        "headline": "How could astronauts manage CO₂ on the Moon?",
+        "description": "I started AERO-LITE after learning about a carbon capture challenge at Space Center Houston. My first approach was to compress cabin air directly, but after examining the problem more closely, I redesigned the system to concentrate CO₂ first. That decision shaped the prototype I eventually built.",
+        "image": "/assets/images/aero-prototype.jpg",
+        "image_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
+        "image_caption": "Phase 1 prototype: three mason jars, a live ESP32-S3, and a dashboard updating every second.",
+        "stats": [
+          {
+            "num": "3",
+            "text": "live CO₂ sensors",
+            "qualifier": "observed in the Phase 1 prototype"
+          },
+          {
+            "num": "ESP32-S3",
+            "text": "working prototype",
+            "qualifier": "observed on the bench"
+          },
+          {
+            "num": "Live",
+            "text": "readings via web dashboard",
+            "qualifier": "observed, updating every second"
+          }
+        ],
+        "links": [
+          {
+            "label": "Explore the Build Story →",
+            "url": "projects/aero-lite"
+          },
+          {
+            "label": "GitHub ↗",
+            "url": "https://github.com/iamtilakpatel/aero-lite"
+          }
+        ]
       },
       {
-        "tag": "Robotics",
-        "slug": "ashtavakra",
-        "tag_color": "blue",
-        "title": "Ashtavakra Robotic Arm",
-        "description": "A Wi-Fi-controlled 6-DoF robotic arm I built with custom Arduino firmware and a browser-based controller. What started as a simple servo project grew into hands-on work with motion control, calibration, electronics, networking, and engineering problem-solving.",
-        "link": "projects/ashtavakra",
-        "link_text": "View project details →"
+        "id": "ashtavakra",
+        "flagship": false,
+        "label": "ASHTAVAKRA · ROBOTICS",
+        "note": "Independent project · Started in 8th grade, still evolving in high school",
+        "headline": "The LEGO question became a Wi-Fi-controlled robotic arm.",
+        "description": "After learning Arduino, electronics, and programming, I returned to that early idea as a six-degree-of-freedom arm controlled through a browser. I wrote the Arduino firmware myself, connected eight servos through a motor driver, and built the browser controls — so a command on screen could move a real joint.",
+        "stats": [
+          {
+            "num": "6",
+            "text": "degrees of freedom"
+          },
+          {
+            "num": "8",
+            "text": "servo motors"
+          },
+          {
+            "num": "Wi-Fi",
+            "text": "browser control"
+          }
+        ],
+        "links": [
+          {
+            "label": "Explore the Build Story →",
+            "url": "projects/ashtavakra"
+          },
+          {
+            "label": "GitHub ↗",
+            "url": "https://github.com/iamtilakpatel/ashtavakra"
+          }
+        ]
       }
     ],
-    "blog_section_title": "Latest from the Blog",
-    "blog_intro": "I write about what breaks, what fixes it, and what I wish someone told me before I started."
+    "build_log": {
+      "heading": "Build Log",
+      "intro": "What worked. What did not. What I learned.",
+      "cards": [
+        {
+          "category": "Problem-solving",
+          "tag": "Debugging",
+          "headline": "The Robotic Arm Didn't Work. So I Stopped Guessing.",
+          "excerpt": "I started by changing code until something worked. After a fried board, a missing I2C device, and strange servo channels, I learned a better way to solve: isolate one problem, test one assumption, and collect evidence before changing anything.",
+          "url": "robotic-arm-engineering-problems.html",
+          "link_label": "Read the build note →"
+        },
+        {
+          "category": "Engineering judgment",
+          "tag": "Rethinking",
+          "headline": "The Calculation That Changed My Design",
+          "excerpt": "I wanted to compress cabin air directly, but compression alone would not separate out CO₂. The numbers made me rethink the design: capture CO₂ first, then consider compressing a concentrated stream. That is where AERO-LITE changed direction.",
+          "url": "capture-first-compress-later.html",
+          "link_label": "Read the build note →"
+        },
+        {
+          "category": "Communication",
+          "tag": "Clear thinking",
+          "headline": "Building It Wasn't the Same as Explaining It",
+          "excerpt": "Eight slides and a prototype with live CO₂ readings. What I learned about explaining a technical project without exaggerating what my first prototype actually proved.",
+          "url": "nasa-challenge-submission.html",
+          "link_label": "Read the reflection →"
+        }
+      ],
+      "all_link": {
+        "label": "All Blog Posts →",
+        "url": "blog.html"
+      }
+    },
+    "journey": {
+      "heading": "From Gears to Space Systems",
+      "subtitle": "Each build raised a new question — and led me to the next one.",
+      "link": {
+        "label": "Explore the complete journey →",
+        "url": "about.html"
+      },
+      "milestones": [
+        {
+          "date": "4TH–5TH GRADE · GEARS",
+          "status": "completed",
+          "status_label": "Completed",
+          "title": "LEGO mechanisms",
+          "text": "The first question that wouldn't let go."
+        },
+        {
+          "date": "6TH GRADE · CODE + CIRCUITS",
+          "status": "completed",
+          "status_label": "Completed",
+          "title": "Arduino starter kit",
+          "text": "Code could make something happen in the real world."
+        },
+        {
+          "date": "7TH–8TH GRADE · ROBOTICS",
+          "status": "completed",
+          "status_label": "Completed",
+          "title": "From one servo to Ashtavakra",
+          "text": "Controlling a mechanism from my phone became a 6-DoF arm."
+        },
+        {
+          "date": "SPRING 2026 · SPACE SYSTEMS",
+          "status": "completed",
+          "status_label": "Completed",
+          "title": "AERO-LITE takes shape",
+          "text": "A lunar challenge pushed me past robotics — and made me revise the design."
+        },
+        {
+          "date": "FALL 2026 · VISION AI",
+          "status": "progress",
+          "status_label": "In progress",
+          "title": "From control to vision",
+          "text": "Teaching Ashtavakra to sense more than it moves."
+        },
+        {
+          "date": "LOOKING AHEAD · AEROSPACE",
+          "status": "planned",
+          "status_label": "Planned",
+          "title": "The next question is still open",
+          "text": "Bigger aerospace and rocketry builds, one testable question at a time."
+        }
+      ]
+    },
+    "beyond": {
+      "heading": "Beyond the Workbench",
+      "note": "A little about the person behind the projects.",
+      "quote": "The projects may be mine, but the curiosity behind them has never grown alone.",
+      "paragraphs": [
+        "My dad gave me my first Arduino kit as a birthday gift. That small box of parts opened a new way to learn: ask a question, try something, and talk through what happened.",
+        "He still mentors me with feedback and encouragement. That support has helped me keep investigating, revise my thinking, and explain what I am learning in my own voice."
+      ]
+    },
+    "how_i_build": {
+      "heading": "How I Build",
+      "note": "The tools matter. The way I test, debug, and document matters more.",
+      "groups": [
+        {
+          "number": "01",
+          "title": "Build",
+          "text": "Start small, make a rough version real, and use it to discover what the sketch missed.",
+          "chips": [
+            "Prototype early",
+            "Experiment"
+          ]
+        },
+        {
+          "number": "02",
+          "title": "Code",
+          "text": "Test one assumption at a time and make the system's behavior visible before changing it.",
+          "chips": [
+            "Isolate the problem",
+            "Expose the data"
+          ]
+        },
+        {
+          "number": "03",
+          "title": "Think",
+          "text": "Compare trade-offs, improve the design from what I learn, and document the next decision.",
+          "chips": [
+            "Measure",
+            "Revise",
+            "Share"
+          ]
+        }
+      ],
+      "more_link": {
+        "label": "The fuller breakdown lives on the Journey page →",
+        "url": "about.html"
+      }
+    },
+    "contact": {
+      "eyebrow": "STUDENT · BUILDER · ASPIRING AEROSPACE ENGINEER",
+      "heading": "Want to compare notes?",
+      "email_display": "iamtilakpatel [at] gmail [dot] com",
+      "email": "iamtilakpatel@gmail.com",
+      "copy_label": "Copy email",
+      "github_label": "GitHub profile ↗",
+      "github_url": "https://github.com/iamtilakpatel"
+    }
   },
- "about": {
-  "page_title": "My Journey",
-
-  "page_subtitle": "What I am building now, what shaped it, and what I learned along the way.",
-
-  "intro": "The projects on this page look very different, but they all started the same way: I found something I did not understand and wanted to figure it out. Whether it was <b>making an LED blink</b>, <b>building a robotic arm</b>, or <b>researching how astronauts could manage CO₂ on the Moon</b>, each challenge pulled me toward the next one.",
-
-  "timeline": [
-    {
-      "year": "2026-2027",
-      "grade": "Freshman Year",
-      "title": "From Control to Vision",
-      "highlight": true,
-      "paragraphs": [
-        "I started high school with a challenging course load that matches where I want to go: PLTW Principles of Engineering Honors, Algebra 2 Honors, Biology Honors, English Honors, and AP World History. I wanted freshman year to push me both technically and academically while I continued building projects outside the classroom."
-      ],
-      "sections": [
-        {
-          "heading": "Summer 2026: A Working Ashtavakra",
-          "text": "I turned Ashtavakra from an early test into a working 3D-printed robotic arm that I can control over Wi-Fi. It can move the way I tell it to, but it still depends on me for almost every decision."
-        },
-        {
-          "heading": "Fall 2026: Giving It Vision",
-          "text": "I am now working on the Vision AI part of Ashtavakra. My goal is for the arm to recognize objects and eventually use what it sees to help decide how to move. It is still a work in progress, and I am learning a lot while trying to make the different parts work together."
-        }
-      ]
-    },
-    {
-      "year": "2025–2026",
-      "grade": "8th Grade",
-      "title": "Building With Purpose",
-      "paragraphs": [
-        "In 8th grade, I started thinking differently about my projects. Instead of only asking, \"Can I build this?\" I started asking, \"What problem could this solve?\""
-      ],
-      "sections": [
-        {
-          "heading": "Fall 2025: Ashtavakra Begins",
-          "text": "The idea came from a LEGO grabber I had built years earlier. I started Ashtavakra as my own robotic-arm project and built an early version to see if I could get the mechanics, electronics, and code working together."
-        },
-        {
-          "heading": "Spring 2026: AERO-LITE",
-          "text": "I entered Space Center Houston's Carbon Capture Challenge and built AERO-LITE, a project focused on removing CO₂ from the air in a future lunar habitat. I had to learn about chemistry, sensors, electronics, programming, and a lot of things I had never worked with before."
-        },
-        {
-          "heading": "May 2026: Top Individual Award",
-          "text": "AERO-LITE received the Top Individual Award in the Middle School division. I was excited about winning, but what mattered even more was realizing that I could start with something I barely understood, keep learning, and turn the idea into a working project."
-        }
-      ]
-    },
-    {
-      "year": "2024–2025",
-      "grade": "7th Grade",
-      "title": "Trying More on My Own",
-      "paragraphs": [
-        "I started building projects that combined code, sensors, and movement. An Arduino car taught me how to work with motors and sensors, and later I discovered the ESP32 and built a simple web page that let me control servos from my phone.",
-        "This was also when I started moving away from copying tutorials and trying more ideas of my own. By the end of 7th grade, I signed up for PLTW Introduction to Engineering because I wanted to learn more before taking on bigger projects."
-      ],
-      "sections": []
-    },
-    {
-      "year": "2023–2024",
-      "grade": "6th Grade",
-      "title": "The Spark",
-      "paragraphs": [
-        "My dad gave me an Arduino Starter Kit for my birthday. I started with a blinking LED, then buttons, sensors, and projects I found online. Most of them did not work the first time, but I loved seeing a few lines of code make something happen in the real world."
-      ],
-      "sections": []
-    },
-    {
-      "year": "2021–2023",
-      "grade": "4th–5th Grade",
-      "title": "Gears Before Code",
-      "paragraphs": [
-        "I spent a lot of time building LEGO and other mechanical sets with motors, gears, and moving parts. I liked following the instructions at first, but I liked taking things apart and changing them even more.",
-        "By the end of 5th grade, I wanted to do more than connect gears and motors. I wanted to control what I built with code."
-      ],
-      "sections": []
-    },
-    {
-      "year": "2027+",
-      "grade": "Looking Ahead",
-      "title": "Looking Ahead",
-      "future": true,
-      "paragraphs": [
-        "Ashtavakra: After finishing the Vision AI work, I want to keep exploring how the arm can do simple tasks with less help from me.",
-
-        "AERO-LITE: I want to continue testing the project and collect better data to understand how well the CO₂ capture idea actually works.",
-
-        "Aerospace: I want to take on bigger aerospace and rocketry projects that push me to learn more physics, engineering, teamwork, and testing.",
-
-        "Keep Building: As I learn more math, science, programming, and engineering, I want my projects to grow with me. I hope I keep choosing things that are just a little beyond what I already know how to do."
-      ],
-      "sections": []
-    }
-  ],
-
-
-  "beliefs_title": "How I Approach Projects",
-  "beliefs": [
-    {
-      "icon": "🛠️",
-      "title": "Start Small",
-      "text": "Big projects feel less overwhelming when I start with one simple goal. Make one motor move. Read one sensor. Get one part working. Then build from there."
-    },
-    {
-      "icon": "🔍",
-      "title": "Test, Don't Guess",
-      "text": "When something does not work, I try to change one thing at a time and see what actually happens. I have learned that guessing usually creates more problems."
-    },
-    {
-      "icon": "📉",
-      "title": "Learn From What Breaks",
-      "text": "I have burned boards, wired things incorrectly, and spent hours chasing the wrong problem. Those mistakes are frustrating, but they are also the parts I usually remember and learn from the most."
-    },
-    {
-      "icon": "🧩",
-      "title": "Keep It Simple",
-      "text": "I used to think adding more parts and features made a project better. Now I try to find the simplest solution that does the job well before making it more complicated."
-    },
-    {
-      "icon": "🛡️",
-      "title": "Build Safely",
-      "text": "Working with batteries, motors, heat, and moving parts has taught me to think about what could go wrong before I turn something on. A working project is not worth much if it is not safe."
-    },
-    {
-      "icon": "🌱",
-      "title": "Share What I Learn",
-      "text": "I document my projects because I know how helpful it is to find someone else's explanation when I am stuck. If my notes help another student get past a problem, they are worth writing."
-    }
-  ]
+  "about": {
+    "page_title": "My Journey",
+    "page_subtitle": "What I am building now, what shaped it, and what I learned along the way.",
+    "intro": "The projects on this page look very different, but they all started the same way: I found something I did not understand and wanted to figure it out. Whether it was <b>making an LED blink</b>, <b>building a robotic arm</b>, or <b>researching how astronauts could manage CO₂ on the Moon</b>, each challenge pulled me toward the next one.",
+    "timeline": [
+      {
+        "year": "2026-2027",
+        "grade": "Freshman Year",
+        "title": "From Control to Vision",
+        "highlight": true,
+        "paragraphs": [
+          "I started high school with a challenging course load that matches where I want to go: PLTW Principles of Engineering Honors, Algebra 2 Honors, Biology Honors, English Honors, and AP World History. I wanted freshman year to push me both technically and academically while I continued building projects outside the classroom."
+        ],
+        "sections": [
+          {
+            "heading": "Summer 2026: A Working Ashtavakra",
+            "text": "I turned Ashtavakra from an early test into a working 3D-printed robotic arm that I can control over Wi-Fi. It can move the way I tell it to, but it still depends on me for almost every decision."
+          },
+          {
+            "heading": "Fall 2026: Giving It Vision",
+            "text": "I am now working on the Vision AI part of Ashtavakra. My goal is for the arm to recognize objects and eventually use what it sees to help decide how to move. It is still a work in progress, and I am learning a lot while trying to make the different parts work together."
+          }
+        ]
+      },
+      {
+        "year": "2025–2026",
+        "grade": "8th Grade",
+        "title": "Building With Purpose",
+        "paragraphs": [
+          "In 8th grade, I started thinking differently about my projects. Instead of only asking, \"Can I build this?\" I started asking, \"What problem could this solve?\""
+        ],
+        "sections": [
+          {
+            "heading": "Fall 2025: Ashtavakra Begins",
+            "text": "The idea came from a LEGO grabber I had built years earlier. I started Ashtavakra as my own robotic-arm project and built an early version to see if I could get the mechanics, electronics, and code working together."
+          },
+          {
+            "heading": "Spring 2026: AERO-LITE",
+            "text": "I entered Space Center Houston's Carbon Capture Challenge and built AERO-LITE, a project focused on removing CO₂ from the air in a future lunar habitat. I had to learn about chemistry, sensors, electronics, programming, and a lot of things I had never worked with before."
+          },
+          {
+            "heading": "May 2026: Top Individual Award",
+            "text": "AERO-LITE received the Top Individual Award in the Middle School division. I was excited about winning, but what mattered even more was realizing that I could start with something I barely understood, keep learning, and turn the idea into a working project."
+          }
+        ]
+      },
+      {
+        "year": "2024–2025",
+        "grade": "7th Grade",
+        "title": "Trying More on My Own",
+        "paragraphs": [
+          "I started building projects that combined code, sensors, and movement. An Arduino car taught me how to work with motors and sensors, and later I discovered the ESP32 and built a simple web page that let me control servos from my phone.",
+          "This was also when I started moving away from copying tutorials and trying more ideas of my own. By the end of 7th grade, I signed up for PLTW Introduction to Engineering because I wanted to learn more before taking on bigger projects."
+        ],
+        "sections": []
+      },
+      {
+        "year": "2023–2024",
+        "grade": "6th Grade",
+        "title": "The Spark",
+        "paragraphs": [
+          "My dad gave me an Arduino Starter Kit for my birthday. I started with a blinking LED, then buttons, sensors, and projects I found online. Most of them did not work the first time, but I loved seeing a few lines of code make something happen in the real world."
+        ],
+        "sections": []
+      },
+      {
+        "year": "2021–2023",
+        "grade": "4th–5th Grade",
+        "title": "Gears Before Code",
+        "paragraphs": [
+          "I spent a lot of time building LEGO and other mechanical sets with motors, gears, and moving parts. I liked following the instructions at first, but I liked taking things apart and changing them even more.",
+          "By the end of 5th grade, I wanted to do more than connect gears and motors. I wanted to control what I built with code."
+        ],
+        "sections": []
+      },
+      {
+        "year": "2027+",
+        "grade": "Looking Ahead",
+        "title": "Looking Ahead",
+        "future": true,
+        "paragraphs": [
+          "Ashtavakra: After finishing the Vision AI work, I want to keep exploring how the arm can do simple tasks with less help from me.",
+          "AERO-LITE: I want to continue testing the project and collect better data to understand how well the CO₂ capture idea actually works.",
+          "Aerospace: I want to take on bigger aerospace and rocketry projects that push me to learn more physics, engineering, teamwork, and testing.",
+          "Keep Building: As I learn more math, science, programming, and engineering, I want my projects to grow with me. I hope I keep choosing things that are just a little beyond what I already know how to do."
+        ],
+        "sections": []
+      }
+    ],
+    "beliefs_title": "How I Approach Projects",
+    "beliefs": [
+      {
+        "icon": "🛠️",
+        "title": "Start Small",
+        "text": "Big projects feel less overwhelming when I start with one simple goal. Make one motor move. Read one sensor. Get one part working. Then build from there."
+      },
+      {
+        "icon": "🔍",
+        "title": "Test, Don't Guess",
+        "text": "When something does not work, I try to change one thing at a time and see what actually happens. I have learned that guessing usually creates more problems."
+      },
+      {
+        "icon": "📉",
+        "title": "Learn From What Breaks",
+        "text": "I have burned boards, wired things incorrectly, and spent hours chasing the wrong problem. Those mistakes are frustrating, but they are also the parts I usually remember and learn from the most."
+      },
+      {
+        "icon": "🧩",
+        "title": "Keep It Simple",
+        "text": "I used to think adding more parts and features made a project better. Now I try to find the simplest solution that does the job well before making it more complicated."
+      },
+      {
+        "icon": "🛡️",
+        "title": "Build Safely",
+        "text": "Working with batteries, motors, heat, and moving parts has taught me to think about what could go wrong before I turn something on. A working project is not worth much if it is not safe."
+      },
+      {
+        "icon": "🌱",
+        "title": "Share What I Learn",
+        "text": "I document my projects because I know how helpful it is to find someone else's explanation when I am stuck. If my notes help another student get past a problem, they are worth writing."
+      }
+    ]
   },
   "projects": {
     "page_title": "Projects",
@@ -233,8 +452,8 @@
           "label": "live sensors"
         },
         {
-          "num": "6",
-          "label": "min cycle"
+          "num": "6:15",
+          "label": "min:sec design cycle"
         }
       ],
       "problem_title": "The Problem",
@@ -258,10 +477,10 @@
         {
           "title": "AERO-LITE",
           "lines": [
-            "Regenerative. 0.99 lb. ~8W.",
-            "Captures, releases, repeats."
+            "Regenerative CO₂ capture concept.",
+            "Early prototype: zeolite, silica gel, sensors, and dashboard."
           ],
-          "win": "No canisters. No vents. Just zeolite and heat."
+          "win": "Goal: capture, release, and reuse the sorbent. Full-cycle performance still needs testing."
         }
       ],
       "how_title": "How It Works",
@@ -279,15 +498,15 @@
         {
           "num": "3",
           "title": "RELEASE",
-          "text": "Heat to 248°F. CO₂ desorbs from zeolite as concentrated gas. Chamber is sealed — cabin loop stays isolated."
+          "text": "Planned regeneration stage: use controlled heating to release CO₂ adsorbed on the zeolite. The first prototype simulated heater control; repeatable regeneration and resulting CO₂ concentration still need to be tested."
         },
         {
           "num": "4",
           "title": "COMPRESS",
-          "text": "Sweep gas pushes concentrated CO₂ through compressor into buffer tank at 22 psi. Steady feed for the Sabatier reactor."
+          "text": "Planned downstream stage: compress a CO₂-rich stream into a buffer tank for possible use with a Sabatier system. The compressor, pressure target, and continuous-feed integration require future validation."
         }
       ],
-      "cycle_note": "The cycle: ADSORB (~5 min) → REGEN (~1 min) → PURGE (~15 sec). The buffer tank decouples AERO-LITE's cycle from the Sabatier's continuous demand.",
+      "cycle_note": "Intended control schedule: ADSORB (~5 min) → REGEN (~1 min) → PURGE (~15 sec), totaling ~6 min 15 sec. This is a design setting, not a validated full regeneration-cycle measurement. The proposed buffer tank is intended to smooth the intermittent output for downstream use; that integration remains to be tested.",
       "prototype_title": "The Prototype",
       "prototype_text": "This is not a rendering. It is three mason jars on my desk, a live ESP32-S3, and a web dashboard that updates every second.",
       "prototype_bullets": [
@@ -298,20 +517,20 @@
         "Sensors: 3× SCD41 (Cabin, Purified, Tank)",
         "Dashboard: Pure HTML/CSS/JS, polling JSON API at 1 Hz"
       ],
-      "prototype_data": "Live data: Cabin 1,029 ppm → Purified 477 ppm. Capture visible in real time.",
+      "prototype_data": "One recorded dashboard snapshot: Cabin sensor 1,029 ppm; Purified sensor 477 ppm. These readings illustrate the prototype sensor output, not validated CO₂ capture efficiency or sustained performance.",
       "learnings_title": "What I Learned",
       "learnings": [
         {
           "title": "💡 Capture First, Compress Later",
-          "text": "My first design compressed cabin air directly. The math showed 99% of that energy compresses nitrogen, not CO₂. I felt stupid. Then I fixed it. That is engineering."
+          "text": "I initially thought compressing cabin air could give me a useful CO₂ stream. Then I realized compression alone does not separate the gases. I redesigned the concept to capture CO₂ before any downstream compression. Actual power and mass savings still need testing."
         },
         {
           "title": "🔥 Thermal Swing > Pressure Swing",
           "text": "Pressure swing uses less energy, but vacuum seals in microgravity are catastrophic leak risks. A PTC heater with a bimetallic cutoff is safer — even if the ESP32 crashes."
         },
         {
-          "title": "📊 The Dashboard Proves It",
-          "text": "Judges see 50 slide decks. They remember the one with a photo of real hardware and a URL where they can watch numbers change. Proof beats promises."
+          "title": "📊 The Dashboard Is Evidence, Not an Efficiency Test",
+          "text": "Real hardware and live sensor readings made the project concrete. One dashboard snapshot did not establish capture efficiency; I need repeatable experiments and controlled measurements for that."
         }
       ],
       "repo_title": "Repository",
@@ -320,121 +539,112 @@
       "repo_label": "github.com/iamtilakpatel/aero-lite"
     },
     "ashtavakra": {
-    "tag": "Independent Robotics Project · 2026",
-    "title": "Ashtavakra Robotic Arm",
-    "subtitle": "A Wi-Fi-controlled 6-DoF robotic arm with custom firmware and a browser-based controller. Started in 8th grade and still evolving in high school.",
-    "prototype_image": "/assets/images/project-placeholder.jpg",
-    "prototype_image_alt": "Ashtavakra robotic arm with multiple servo-driven joints and gripper",
-
-    "stats": [
-      {
-        "num": "6",
-        "label": "degrees of freedom"
-      },
-      {
-        "num": "8",
-        "label": "servo motors"
-      },
-      {
-        "num": "7",
-        "label": "user controls"
-      },
-      {
-        "num": "Wi-Fi",
-        "label": "browser control"
-      }
-    ],
-
-    "problem_title": "What I Wanted to Build",
-    "problem_cards": [
-      {
-        "title": "More Than a Kit",
-        "lines": [
-          "Most robotic-arm kits already include the control system.",
-          "That makes them easy to assemble, but harder to learn from."
-        ],
-        "fatal": "I wanted to understand what happens between a control on a screen and a joint moving."
-      },
-      {
-        "title": "Movement Was Not Enough",
-        "lines": [
-          "Servos could move, but motion was jerky.",
-          "Physical alignment and channel mapping were inconsistent."
-        ],
-        "fatal": "A robot that moves is not automatically a robot that moves well."
-      },
-      {
-        "title": "My Approach",
-        "lines": [
-          "Custom Arduino firmware.",
-          "Custom browser controller.",
-          "Software calibration and smooth motion."
-        ],
-        "win": "Build the control system myself, test it, break it, understand it, and improve it."
-      }
-    ],
-
-    "how_title": "How It Works",
-    "stages": [
-      {
-        "num": "1",
-        "title": "CONTROL",
-        "text": "A phone or laptop opens the web controller I built using HTML, CSS, and JavaScript."
-      },
-      {
-        "num": "2",
-        "title": "PROCESS",
-        "text": "Commands travel over Wi-Fi to an Arduino UNO R4 WiFi running my motion-control firmware."
-      },
-      {
-        "num": "3",
-        "title": "DRIVE",
-        "text": "The Arduino communicates over I2C with an Emakefun Motor Driver V5.2, which controls all eight servos."
-      },
-      {
-        "num": "4",
-        "title": "MOVE",
-        "text": "The servos move the base, arm, wrist, and gripper while the firmware handles calibration, speed, and smooth motion."
-      }
-    ],
-
-    "cycle_note": "The control path is simple: Browser → Wi-Fi → Arduino UNO R4 WiFi → I2C Motor Driver → Servos → Robotic Arm.",
-
-    "prototype_title": "The Build",
-    "prototype_text": "Ashtavakra is not controlled by a pre-built robotics app. I wrote the Arduino firmware and browser interface, mapped the servo channels, calibrated the joints, and added the tools I needed as problems appeared.",
-
-    "prototype_bullets": [
-      "Controller: Arduino UNO R4 WiFi",
-      "Servo driver: Emakefun Motor Driver V5.2 at I2C address 0x60",
-      "Actuation: 8× TD-8120MG servos",
-      "Motion: 6-DoF arm + gripper with 7 user controls and 1 twin support servo",
-      "Interface: Custom HTML/CSS/JavaScript browser controller",
-      "Firmware: C++ with servo offsets, speed control, S-curve motion, reset, and emergency stop"
-    ],
-
-    "prototype_data": "Current result: a working robotic arm that can be controlled wirelessly from a phone or laptop without installing a dedicated app.",
-
-    "learnings_title": "What I Learned",
-    "learnings": [
-      {
-        "title": "🔍 Test Instead of Guess",
-        "text": "When the motor driver would not respond, I stopped changing the main program and wrote a small I2C scanner. It found the board at 0x60. That changed how I debug problems: isolate one assumption, test it, then move on."
-      },
-      {
-        "title": "⚙️ Software Can Fix Physical Problems",
-        "text": "Some servo horns were slightly misaligned. Instead of repeatedly rebuilding the joints, I added software offsets so each servo could be calibrated individually."
-      },
-      {
-        "title": "🧩 Build the Whole System",
-        "text": "The hardest part was not making one servo move. It was getting mechanics, electronics, firmware, Wi-Fi, and the browser interface to work together reliably."
-      }
-    ],
-
-    "repo_title": "Repository",
-    "repo_text": "Firmware, web controller, architecture, design decisions, and project documentation are available in the public repository.",
-    "repo_url": "https://github.com/iamtilakpatel/ashtavakra",
-    "repo_label": "github.com/iamtilakpatel/ashtavakra"
-  }
+      "tag": "Independent Robotics Project · 2026",
+      "title": "Ashtavakra Robotic Arm",
+      "subtitle": "A Wi-Fi-controlled 6-DoF robotic arm with custom firmware and a browser-based controller. Started in 8th grade and still evolving in high school.",
+      "prototype_image": "/assets/images/project-placeholder.jpg",
+      "prototype_image_alt": "Ashtavakra robotic arm with multiple servo-driven joints and gripper",
+      "stats": [
+        {
+          "num": "6",
+          "label": "degrees of freedom"
+        },
+        {
+          "num": "8",
+          "label": "servo motors"
+        },
+        {
+          "num": "7",
+          "label": "user controls"
+        },
+        {
+          "num": "Wi-Fi",
+          "label": "browser control"
+        }
+      ],
+      "problem_title": "What I Wanted to Build",
+      "problem_cards": [
+        {
+          "title": "More Than a Kit",
+          "lines": [
+            "Most robotic-arm kits already include the control system.",
+            "That makes them easy to assemble, but harder to learn from."
+          ],
+          "fatal": "I wanted to understand what happens between a control on a screen and a joint moving."
+        },
+        {
+          "title": "Movement Was Not Enough",
+          "lines": [
+            "Servos could move, but motion was jerky.",
+            "Physical alignment and channel mapping were inconsistent."
+          ],
+          "fatal": "A robot that moves is not automatically a robot that moves well."
+        },
+        {
+          "title": "My Approach",
+          "lines": [
+            "Custom Arduino firmware.",
+            "Custom browser controller.",
+            "Software calibration and smooth motion."
+          ],
+          "win": "Build the control system myself, test it, break it, understand it, and improve it."
+        }
+      ],
+      "how_title": "How It Works",
+      "stages": [
+        {
+          "num": "1",
+          "title": "CONTROL",
+          "text": "A phone or laptop opens the web controller I built using HTML, CSS, and JavaScript."
+        },
+        {
+          "num": "2",
+          "title": "PROCESS",
+          "text": "Commands travel over Wi-Fi to an Arduino UNO R4 WiFi running my motion-control firmware."
+        },
+        {
+          "num": "3",
+          "title": "DRIVE",
+          "text": "The Arduino communicates over I2C with an Emakefun Motor Driver V5.2, which controls all eight servos."
+        },
+        {
+          "num": "4",
+          "title": "MOVE",
+          "text": "The servos move the base, arm, wrist, and gripper while the firmware handles calibration, speed, and smooth motion."
+        }
+      ],
+      "cycle_note": "The control path is simple: Browser → Wi-Fi → Arduino UNO R4 WiFi → I2C Motor Driver → Servos → Robotic Arm.",
+      "prototype_title": "The Build",
+      "prototype_text": "Ashtavakra is not controlled by a pre-built robotics app. I wrote the Arduino firmware and browser interface, mapped the servo channels, calibrated the joints, and added the tools I needed as problems appeared.",
+      "prototype_bullets": [
+        "Controller: Arduino UNO R4 WiFi",
+        "Servo driver: Emakefun Motor Driver V5.2 at I2C address 0x60",
+        "Actuation: 8× TD-8120MG servos",
+        "Motion: 6-DoF arm + gripper with 7 user controls and 1 twin support servo",
+        "Interface: Custom HTML/CSS/JavaScript browser controller",
+        "Firmware: C++ with servo offsets, speed control, S-curve motion, reset, and emergency stop"
+      ],
+      "prototype_data": "Current result: a working robotic arm that can be controlled wirelessly from a phone or laptop without installing a dedicated app.",
+      "learnings_title": "What I Learned",
+      "learnings": [
+        {
+          "title": "🔍 Test Instead of Guess",
+          "text": "When the motor driver would not respond, I stopped changing the main program and wrote a small I2C scanner. It found the board at 0x60. That changed how I debug problems: isolate one assumption, test it, then move on."
+        },
+        {
+          "title": "⚙️ Software Can Fix Physical Problems",
+          "text": "Some servo horns were slightly misaligned. Instead of repeatedly rebuilding the joints, I added software offsets so each servo could be calibrated individually."
+        },
+        {
+          "title": "🧩 Build the Whole System",
+          "text": "The hardest part was not making one servo move. It was getting mechanics, electronics, firmware, Wi-Fi, and the browser interface to work together reliably."
+        }
+      ],
+      "repo_title": "Repository",
+      "repo_text": "Firmware, web controller, architecture, design decisions, and project documentation are available in the public repository.",
+      "repo_url": "https://github.com/iamtilakpatel/ashtavakra",
+      "repo_label": "github.com/iamtilakpatel/ashtavakra"
+    }
   },
   "blog": {
     "page_title": "Blog",
