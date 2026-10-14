@@ -1,0 +1,48 @@
+{% set cse = project.case %}
+<section class="section" id="evidence">
+  {% if cse.evidence.kicker %}<span class="cs-kicker">{{ cse.evidence.kicker }}</span>{% endif %}
+  <h2>{{ cse.evidence.heading }}</h2>
+  {% if cse.evidence.get("intro") %}
+  <div class="cs-chapter-intro prose">
+    <p>{{ cse.evidence.intro }}</p>
+  </div>
+  {% endif %}
+
+  <div class="cs-evidence">
+    <figure class="cs-evidence-photo">
+      {% if cse.evidence.get("figure_label") %}<span class="cs-fig-label">{{ cse.evidence.figure_label }}</span>{% endif %}
+      <img src="{{ cse.hero.photo }}" alt="{{ cse.evidence.photo_alt }}" />
+      <figcaption class="cs-photo-caption">{{ cse.evidence.photo_caption }}</figcaption>
+    </figure>
+
+    <div class="cs-evidence-side">
+      <div class="cs-md">
+        <div>
+          <span class="cs-kicker">{{ cse.evidence.observed_kicker }}</span>
+          <p><strong>{{ cse.evidence.observed_lead_strong }}</strong> {{ cse.evidence.observed_lead_text }}</p>
+          {% for paragraph in cse.evidence.observed_paragraphs %}
+          <p>{{ paragraph }}</p>
+          {% endfor %}
+        </div>
+        <div>
+          <span class="cs-kicker">{{ cse.evidence.designed_kicker }}</span>
+          <ul>
+            {% for item in cse.evidence.designed_items %}
+            <li><strong>{{ item.strong }}</strong> {{ item.text }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% if cse.evidence.get("missing_asset_text") %}
+      <p class="cs-missing">
+        <span class="cs-kicker">{{ cse.evidence.missing_asset_label | default("MISSING ASSET") }}</span>
+        {{ cse.evidence.missing_asset_text }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if cse.evidence.get("pull_quote") %}
+  <p class="cs-quote">&ldquo;{{ cse.evidence.pull_quote }}&rdquo;</p>
+  {% endif %}
+</section>

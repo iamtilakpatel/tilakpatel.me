@@ -1,0 +1,29 @@
+{% set cse = project.case %}
+<section class="section" id="status">
+  {% if cse.status.kicker %}<span class="cs-kicker">{{ cse.status.kicker }}</span>{% endif %}
+  <h2>{{ cse.status.heading }}</h2>
+
+  <div class="cs-status">
+    <div class="cs-md">
+      <div>
+        <span class="cs-kicker">{{ cse.status.working_kicker }}</span>
+        <ul>
+          {% for item in cse.status.working_items %}
+          <li><strong>{{ item.strong }}</strong> {{ item.text }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <span class="cs-kicker">{{ cse.status.dev_kicker }}</span>
+        <ul>
+          {% for item in cse.status.dev_items %}
+          <li><strong>{{ item.strong }}</strong> {{ item.text }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% if cse.status.get("caveat") %}
+    <p class="cs-caveat">{{ cse.status.caveat }}</p>
+    {% endif %}
+  </div>
+</section>

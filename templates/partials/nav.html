@@ -1,0 +1,67 @@
+<nav class="site-nav" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a class="brand" href="{% if page == 'index' %}#main-content{% else %}/index.html{% endif %}" aria-label="{{ meta.author }}, back to top">
+      <img class="brand-logo" src="/assets/images/logo-180.png" width="36" height="36" alt="" />
+      <span class="brand-name" aria-hidden="true">{{ meta.author }}</span>
+    </a>
+    {% set is_home = (page == 'index') %}
+    {% set home_style_nav = is_home or (home_nav is defined and home_nav) %}
+    {% set nav_items = (nav.home_anchors if home_style_nav else nav.links) %}
+    <ul class="nav-links">
+      {% if is_home %}
+      {% for item in nav_items %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+      {% elif home_style_nav %}
+      {# Case-study pages reuse the approved homepage label set (Projects · Build Log · Journey · Beyond) with home-rooted anchors. #}
+      {% for item in nav_items %}
+      <li><a href="/{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+      {% elif page in ['projects', 'about', 'blog', 'post'] and nav.get('projects_nav') is sequence %}
+      {# Projects index, My Journey, the Build Log index and article pages use
+         the same approved label set with page-accurate destinations:
+         Journey = the actual Journey page, Beyond = its homepage section. #}
+      {% for item in nav.projects_nav %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+      {% else %}
+      <li><a href="/index.html">Home</a></li>
+      {% for item in nav_items %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+    <div class="nav-actions">
+      <a class="nav-cta" href="{% if is_home %}#contact{% else %}{{ nav.cta.url }}{% endif %}">{{ nav.cta.label }}</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to light paper theme" title="Switch theme">
+        <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8"/><path d="M12 2v2.3M12 19.7V22M4.93 4.93l1.63 1.63M17.44 17.44l1.63 1.63M2 12h2.3M19.7 12H22M4.93 19.07l1.63-1.63M17.44 6.56l1.63-1.63"/></svg>
+      </button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      {% if is_home %}
+      {% for item in nav_items %}
+      <a href="{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+      <a href="#contact">{{ nav.cta.label }}</a>
+      {% elif home_style_nav %}
+      {% for item in nav_items %}
+      <a href="/{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+      <a href="/#contact">{{ nav.cta.label }}</a>
+      {% elif page in ['projects', 'about', 'blog', 'post'] and nav.get('projects_nav') is sequence %}
+      {% for item in nav.projects_nav %}
+      <a href="{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+      <a href="{{ nav.cta.url }}">{{ nav.cta.label }}</a>
+      {% else %}
+      <a href="/index.html">Home</a>
+      {% for item in nav_items %}
+      <a href="{{ item.url }}">{{ item.label }}</a>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</nav>

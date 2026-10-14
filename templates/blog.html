@@ -1,29 +1,56 @@
 {% extends "base.html" %}
-{% block title %}Blog — {{ meta.author }}{% endblock %}
+
+{% block title %}Build Log — {{ meta.author }}{% endblock %}
 {% block body_page %}blog{% endblock %}
 
 {% block content %}
+
 <header class="page-header">
-    <div class="container">
-        <h1>{{ blog.page_title }}</h1>
-        <p class="subtitle">{{ blog.page_subtitle }}</p>
+  <div class="container">
+    <span class="figure-label">{{ blog.get("index_kicker") | default("ENGINEERING NOTES") }}</span>
+    <h1>{{ blog.page_title }}</h1>
+    <p class="subtitle">{{ blog.page_subtitle }}</p>
+    <div class="blg-intro">
+      {% for paragraph in blog.get("index_intro", []) %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
     </div>
+  </div>
 </header>
 
-<section class="section">
-    <div class="container">
-        <div class="blog-list">
-            {% for post in posts %}
-            <article class="blog-card">
-                <span class="blog-date">{{ post.date }}</span>
-                <h2><a href="{{ post.slug }}.html">{{ post.title }}</a></h2>
-                <p class="blog-excerpt">{{ post.excerpt }}</p>
-                {% for tag in post.tags %}
-                <span class="blog-tag">{{ tag }}</span>
-                {% endfor %}
-            </article>
-            {% endfor %}
+<section class="section blg-section">
+  <div class="container">
+
+    {# ── Editorial reading index ────────────────────────────────────────────
+       Generated from `content/posts/*.md` frontmatter, sorted newest-first
+       by build.py. New articles appear automatically — no template changes.
+       Per-article metadata (project, category, case-study link) is optional
+       structured data; unknown perks fall back to the article's own tags. #}
+    {% for post in posts %}
+    {% set ameta = blog.get("articles", {}).get(post.slug) or {} %}
+    {% set project = ameta.get("project") %}
+    {% set category = ameta.get("category") or (post.tags[0] if post.tags else "") %}
+
+    <article class="blg-row" id="blg-{{ post.slug }}">
+      <div class="blg-row-meta">
+        <span class="blg-date">{{ post.date }}</span>
+        {% if project %}<span class="blg-project">{{ project }}</span>{% endif %}
+        {% if category %}<span class="blg-cat">{{ category }}</span>{% endif %}
+      </div>
+      <div class="blg-row-body">
+        <h2>{{ post.title }}</h2>
+        <p class="blg-excerpt">{{ post.excerpt }}</p>
+        <div class="blg-row-foot">
+          <a class="text-link" href="{{ post.slug }}.html">{{ blog.get("read_label") | default("Read the build log →") }}</a>
+          {% for t in post.tags %}
+          <span class="blg-tag">{{ t }}</span>
+          {% endfor %}
         </div>
-    </div>
+      </div>
+    </article>
+    {% endfor %}
+
+  </div>
 </section>
+
 {% endblock %}

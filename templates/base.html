@@ -1,48 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}{{ meta.author }} — Turning Curiosity Into Things That Work{%
-      endblock %}
-    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{% block title %}{{ meta.author }} — Turning Curiosity Into Things That Work{% endblock %}</title>
     <meta
       name="description"
-      content="{% block description %}{{ meta.author }} is an incoming freshman building robots, circuit boards, and aerospace prototypes.{% endblock %}"
+      content="{% block description %}{{ meta.author }} is a student engineer documenting robotics, electronics, and the process behind every build.{% endblock %}"
     />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     {% block head %}{% endblock %}
   </head>
   <body data-page="{% block body_page %}home{% endblock %}">
-    <nav class="navbar">
-      <div class="nav-brand">
-        <a href="/index.html">
-          <img src="/assets/images/logo.png" alt="{{ nav.brand }}" />
-        </a>
-      </div>
-
-      <div class="nav-links">
-        {% for link in nav.links %}
-        <a href="{{ link.url }}">{{ link.label }}</a>
-        {% endfor %}
-      </div>
-    </nav>
-
-    {% block content %}{% endblock %}
-
-    <footer class="footer">
-      <div class="container">
-        <p>{{ footer.line1 }}</p>
-        <p class="footer-small">{{ footer.line2 }}</p>
-        <p class="footer-links">
-          {% for link in footer.links %}
-          <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %} ·
-          {% endif %} {% endfor %}
-        </p>
-      </div>
-    </footer>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {% include "partials/nav.html" %}
+    <main id="main-content">{% block content %}{% endblock %}</main>
+    {% include "partials/footer.html" %}
+    <script src="/assets/js/main.js" defer></script>
   </body>
 </html>

@@ -105,7 +105,7 @@ def collect_posts():
         })
 
     posts.sort(
-        key=lambda p: datetime.strptime(p["date"], "%B %Y"),
+        key=lambda p: (datetime.strptime(p["date"], "%B %Y"), p["slug"]),
         reverse=True,
     )
 
@@ -117,6 +117,8 @@ def collect_projects(data):
     Convert the projects object in data.json into a renderable list.
 
     page_title and page_subtitle are page-level metadata, not projects.
+    Page-level settings (index_kicker, index_intro, …) and any non-object
+    value are skipped as well, so new page metadata can be added freely.
     Each project can optionally define its own slug. If omitted, the
     data.json key is converted from underscores to hyphens.
     """
@@ -125,6 +127,8 @@ def collect_projects(data):
 
     for project_id, project in projects_data.items():
         if project_id in ("page_title", "page_subtitle"):
+            continue
+        if not isinstance(project, dict) or project_id.startswith("index_"):
             continue
 
         item = dict(project)
@@ -149,6 +153,31 @@ def copy_assets():
             dst = DIST / "assets" / rel
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
+
+
+def guard_private_repo_links(html: str, data: dict) -> str:
+    """De-link any anchor that points to a non-public project repository.
+
+    Driven purely by the data schema: a project entry with
+    ``"repository_public": false`` has its ``repo_url`` suppressions applied to
+    every generated page (including blog-post bodies). Setting the flag back to
+    ``true`` (or removing it) restores the links on the next build.
+    """
+    import re
+
+    private_urls = [
+        p["repo_url"]
+        for p in (data.get("projects") or {}).values()
+        if isinstance(p, dict) and p.get("repo_url") and p.get("repository_public") is False
+    ]
+    for url in private_urls:
+        pattern = r'<a\s+href="' + re.escape(url) + r'"[^>]*>(.*?)</a>'
+        html = re.sub(
+            pattern,
+            lambda m: re.sub(r"\s*(?:→|↗|\u2192|\u2197)\s*$", "", m.group(1).strip()),
+            html,
+        )
+    return html
 
 
 def render_site(data, posts):
@@ -178,6 +207,7 @@ def render_site(data, posts):
             page=out_name.replace(".html", ""),
         )
 
+        html = guard_private_repo_links(html, data)
         (DIST / out_name).write_text(html, encoding="utf-8")
         print(f"  ✓ {out_name}")
 
@@ -191,7 +221,7 @@ def render_site(data, posts):
     # Keep the old URL working:
     # /projects.html
     (DIST / "projects.html").write_text(
-        projects_html,
+        guard_private_repo_links(projects_html, data),
         encoding="utf-8",
     )
     print("  ✓ projects.html")
@@ -202,25 +232,30 @@ def render_site(data, posts):
     projects_dir.mkdir(parents=True, exist_ok=True)
 
     (projects_dir / "index.html").write_text(
-        projects_html,
+        guard_private_repo_links(projects_html, data),
         encoding="utf-8",
     )
     print("  ✓ projects/index.html")
 
     # ── individual project detail pages ──
-    project_tmpl = env.get_template("project.html")
-
+    # Projects that opt into the approved case-study layout render through
+    # templates/casestudy.html (+ its partials); everything else keeps the
+    # legacy template unchanged until its own redesign is approved.
     for project in project_items:
         slug = project["slug"]
 
         output_dir = DIST / "projects" / slug
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        html = project_tmpl.render(
+        is_case_study = bool(project.get("case_study"))
+        tmpl = env.get_template("casestudy.html" if is_case_study else "project.html")
+        html = tmpl.render(
             **ctx,
             project=project,
             page="project",
+            home_nav=is_case_study,
         )
+        html = guard_private_repo_links(html, data)
 
         (output_dir / "index.html").write_text(
             html,
@@ -232,13 +267,17 @@ def render_site(data, posts):
     # ── blog posts ──
     post_tmpl = env.get_template("post.html")
 
-    for post in posts:
+    for i, post in enumerate(posts):
         html = post_tmpl.render(
             **ctx,
             post=post,
             page="post",
+            # Chronological neighbors (posts are sorted newest-first).
+            next_post=posts[i - 1] if i > 0 else None,
+            prev_post=posts[i + 1] if i + 1 < len(posts) else None,
         )
 
+        html = guard_private_repo_links(html, data)
         (DIST / f"{post['slug']}.html").write_text(
             html,
             encoding="utf-8",

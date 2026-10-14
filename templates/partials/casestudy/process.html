@@ -1,0 +1,48 @@
+{% set cse = project.case %}
+<section class="section" id="process">
+  {% if cse.process.kicker %}<span class="cs-kicker">{{ cse.process.kicker }}</span>{% endif %}
+  <h2>{{ cse.process.heading }}</h2>
+  {% if cse.process.get("intro") %}
+  <div class="cs-chapter-intro prose">
+    <p>{{ cse.process.intro }}</p>
+  </div>
+  {% endif %}
+
+  <div class="cs-flow" role="list">
+    {% for stage in cse.process.stages %}
+    <div class="cs-node {% if stage.status == 'planned' %}cs-planned{% endif %}" role="listitem">
+      <div class="cs-node-top">
+        <span class="cs-num">{{ '%02d' | format(loop.index) }}</span>
+        <h4>{{ stage.title }}</h4>
+        <span class="cs-chip {% if stage.status == 'planned' %}cs-planned{% else %}cs-built{% endif %}">
+          {{ "DESIGN STAGE" if stage.status == "planned" else "BUILT" }}
+        </span>
+      </div>
+      <p>{{ stage.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if cse.process.get("cycle_note") %}
+  <p class="cs-cycle">
+    {{ cse.process.cycle_note }}
+    {% if cse.process.get("cycle_verdict") %}
+    <strong>{{ cse.process.cycle_verdict }}</strong>
+    {% endif %}
+    {% if cse.process.get("cycle_note_more") %}
+    {{ cse.process.cycle_note_more }}
+    {% endif %}
+  </p>
+  {% endif %}
+
+  {% if cse.process.get("spec_rows") %}
+  <div class="cs-specs">
+    {% for row in cse.process.spec_rows %}
+    <div class="cs-spec-row">
+      <span class="cs-spec-key">{{ row.key }}</span>
+      <span class="cs-spec-val">{{ row.value }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>

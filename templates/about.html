@@ -1,50 +1,112 @@
-{% extends "base.html" %} {% block title %}My Journey — {{ meta.author }}{%
-endblock %} {% block body_page %}about{% endblock %} {% block content %}
+{% extends "base.html" %}
+{% block title %}My Journey — {{ meta.author }}{% endblock %}
+{% block body_page %}about{% endblock %}
+
+{% block content %}
+
 <header class="page-header">
-  <div class="container">
-    <h1>{{ about.page_title }}</h1>
-    <p class="subtitle">{{ about.page_subtitle }}</p>
+  <div class="container jrny-header">
+    <div class="jrny-header-copy">
+      <span class="figure-label">{{ about.get("kicker") | default("STUDENT · BUILDER · ASPIRING AEROSPACE ENGINEER") }}</span>
+      <h1>{{ about.page_title }}</h1>
+      <p class="subtitle">{{ about.page_subtitle }}</p>
+      <div class="jrny-intro">{{ about.intro | safe }}</div>
+      <div class="jrny-start-links">
+        <a class="text-link" href="/projects/">Jump to the projects →</a>
+        <a class="text-link" href="/blog.html">Read the Build Log →</a>
+      </div>
+    </div>
+    {% if about.get("portrait") %}
+    <figure class="jrny-portrait">
+      <img src="{{ about.portrait.src }}" alt="{{ about.portrait.alt }}" width="560" height="420" loading="lazy" />
+    </figure>
+    {% endif %}
   </div>
 </header>
 
-<section class="section">
+<section class="section jrny-section">
   <div class="container">
-    <div class="journey-intro">{{ about.intro | safe }}</div>
-    <div class="timeline">
-      {% for item in about.timeline %}
-      <div
-        class="timeline-item {% if item.highlight %}highlight{% endif %} {% if item.future %}future{% endif %}"
+
+    {# ── Editorial chaptered timeline ───────────────────────────────────────
+       Rendered oldest → future off the existing `about.timeline` data (no new
+       story content; links, art, and turning-point labels come from data).
+       The vertical timeline rule and alternating visuals are presentation
+       only. #}
+    <ol class="jrny-timeline">
+      {# Ascending chronology: data stores chapters newest-first with the
+         future chapter appended last; filter it out, reverse the rest, and
+         re-attach it at the end. #}
+      {% set jrny_items = (about.timeline | rejectattr('future', 'defined') | list | reverse | list) + (about.timeline | selectattr('future', 'defined') | list) %}
+      {% for item in jrny_items %}
+      <li
+        class="jrny-item{% if item.turning_point %} jrny-item--turning{% endif %}{% if item.future %} jrny-item--future{% endif %}"
       >
-        <div class="timeline-marker">
-          <span class="timeline-year">{{ item.year }}</span>
-          <span class="timeline-grade">{{ item.grade }}</span>
+        <div class="jrny-marker">
+          <span class="jrny-year">{{ item.year }}</span>
+          <span class="jrny-grade">{{ item.grade }}</span>
+          {% if item.turning_point %}<span class="jrny-tp">TURNING POINT</span>{% endif %}
+          {% if item.future %}<span class="jrny-next">NEXT</span>{% endif %}
         </div>
-        <div class="timeline-content">
-          <h3>{{ item.title }}</h3>
-          {% for p in item.paragraphs %}
-          <p>{{ p }}</p>
-          {% endfor %} {% for sec in item.sections %}
-          <h4>{{ sec.heading }}</h4>
-          <p>{{ sec.text }}</p>
-          {% endfor %}
+
+        <div class="jrny-body">
+          <div class="jrny-copy">
+            <h2>{{ item.title }}</h2>
+            {% for p in item.paragraphs %}
+            <p>{{ p }}</p>
+            {% endfor %}
+            {% for sec in item.sections %}
+            <div class="jrny-sub">
+              <h3>{{ sec.heading }}</h3>
+              <p>{{ sec.text }}</p>
+              {% if sec.get("link") %}
+              <a class="text-link" href="{{ sec.link.url }}">{{ sec.link.label }}</a>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+
+          {% if item.get("art") %}
+          <figure class="jrny-visual{% if loop.index is even %} jrny-visual--flip{% endif %}">
+            {% if item.art.type == "image" %}
+            <img src="{{ item.art.src }}" alt="{{ item.art.alt }}" loading="lazy" />
+            {% elif item.art.type == "include" %}
+            <div class="jrny-art">{% include item.art.template %}</div>
+            {% endif %}
+            {% if item.art.get("caption") %}
+            <figcaption class="jrny-caption">{{ item.art.caption }}</figcaption>
+            {% endif %}
+          </figure>
+          {% endif %}
         </div>
-      </div>
+      </li>
       {% endfor %}
-    </div>
+    </ol>
+
   </div>
 </section>
 
-<section class="section">
+<section class="section jrny-beliefs-section" aria-labelledby="jrny-beliefs-title">
   <div class="container">
-    <h2 class="section-title">{{ about.beliefs_title }}</h2>
-    <div class="beliefs">
+    <h2 class="jrny-beliefs-title" id="jrny-beliefs-title">{{ about.beliefs_title }}</h2>
+    <div class="jrny-beliefs">
       {% for b in about.beliefs %}
-      <div class="belief">
-        <h4>{{ b.icon }} {{ b.title }}</h4>
+      <div class="jrny-belief">
+        <span class="jrny-belief-icon" aria-hidden="true">{{ b.icon }}</span>
+        <h3>{{ b.title }}</h3>
         <p>{{ b.text }}</p>
       </div>
       {% endfor %}
     </div>
   </div>
 </section>
+
+<section class="section jrny-more">
+  <div class="container">
+    <a class="text-link" href="/">← Back to the homepage</a>
+    {% for l in about.get("page_links", []) %}
+    <a class="text-link" href="{{ l.url }}">{{ l.label }}</a>
+    {% endfor %}
+  </div>
+</section>
+
 {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ project.title }} — {{ meta.author }}{% endblock %}
+{% block body_page %}project{% endblock %}
+
+{% block content %}
+<div class="case-project">
+  {% include "partials/casestudy/hero.html" %}
+  {% if project.case.get("question", {}).get("paragraphs") %}
+  {% include "partials/casestudy/question.html" %}
+  {% endif %}
+  {% if project.case.get("build", {}).get("paragraphs") %}
+  {% with chapter = project.case.build %}
+  {% include "partials/casestudy/question.html" %}
+  {% endwith %}
+  {% endif %}
+  {% if project.case.get("decision", {}).get("paragraphs") or project.case.get("decision", {}).get("key_heading") %}
+  {% include "partials/casestudy/decision.html" %}
+  {% endif %}
+  {% if project.case.get("process", {}).get("stages") %}
+  {% include "partials/casestudy/process.html" %}
+  {% endif %}
+  {% if project.case.get("status", {}).get("working_items") and project.case.status.dev_items is defined %}
+  {% include "partials/casestudy/status.html" %}
+  {% endif %}
+  {% if project.case.get("evidence", {}) %}
+  {% include "partials/casestudy/evidence.html" %}
+  {% endif %}
+  {% if project.case.get("lessons", {}).get("items") %}
+  {% include "partials/casestudy/lessons.html" %}
+  {% endif %}
+  {% if project.case.get("related", {}).get("posts") %}
+  {% include "partials/casestudy/related.html" %}
+  {% endif %}
+</div>
+{% endblock %}
