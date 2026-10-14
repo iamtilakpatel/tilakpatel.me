@@ -105,7 +105,7 @@ def collect_posts():
         })
 
     posts.sort(
-        key=lambda p: datetime.strptime(p["date"], "%B %Y"),
+        key=lambda p: (datetime.strptime(p["date"], "%B %Y"), p["slug"]),
         reverse=True,
     )
 
@@ -267,11 +267,14 @@ def render_site(data, posts):
     # ── blog posts ──
     post_tmpl = env.get_template("post.html")
 
-    for post in posts:
+    for i, post in enumerate(posts):
         html = post_tmpl.render(
             **ctx,
             post=post,
             page="post",
+            # Chronological neighbors (posts are sorted newest-first).
+            next_post=posts[i - 1] if i > 0 else None,
+            prev_post=posts[i + 1] if i + 1 < len(posts) else None,
         )
 
         html = guard_private_repo_links(html, data)

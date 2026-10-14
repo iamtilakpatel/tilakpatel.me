@@ -3,21 +3,44 @@
 {% block body_page %}post{% endblock %}
 
 {% block content %}
-<article class="blog-post">
-    <div class="container">
-        <header class="post-header">
-            <span class="post-date">{{ post.date }}</span>
-            <h1>{{ post.title }}</h1>
-            <p class="post-subtitle">{{ post.excerpt }}</p>
-            <div class="post-tags">
-                {% for tag in post.tags %}
-                <span class="blog-tag">{{ tag }}</span>
-                {% endfor %}
-            </div>
-        </header>
-        <div class="post-content">
-            {{ post.body | safe }}
-        </div>
-    </div>
+{% set ameta = blog.get("articles", {}).get(post.slug) or {} %}
+{% set project = ameta.get("project") %}
+{% set category = ameta.get("category") %}
+{% set rel_label = ((project ~ " · " ~ category) if project and category else (project or category)) %}
+
+<article class="blg-article">
+  <header class="blg-post-header">
+    {% if rel_label %}
+    <span class="blg-post-label">{{ rel_label }}</span>
+    {% else %}
+    <span class="blg-post-label">{{ post.tags | join(", ") if post.tags else "Build log" }}</span>
+    {% endif %}
+    <h1>{{ post.title }}</h1>
+    <p class="blg-post-date">
+      <span>{{ post.date }}</span>
+      {% for t in post.tags %}
+      <span class="blg-tag">{{ t }}</span>
+      {% endfor %}
+    </p>
+    <p class="blg-post-summary">{{ post.excerpt }}</p>
+  </header>
+
+  <div class="blg-post-body prose-journal">
+    {{ post.body | safe }}
+  </div>
+
+  <footer class="blg-post-foot">
+    {% if prev_post %}
+    <a class="text-link" href="{{ prev_post.slug }}.html">← Older: {{ prev_post.title }}</a>
+    {% endif %}
+    {% if next_post %}
+    <a class="text-link" href="{{ next_post.slug }}.html">Newer: {{ next_post.title }} →</a>
+    {% endif %}
+    <a class="text-link" href="blog.html">Back to Build Log</a>
+    {% if ameta.get("case_study") and project %}
+    <a class="text-link blg-post-case" href="{{ ameta.case_study }}">Explore the {{ project }} case study →</a>
+    {% endif %}
+  </footer>
 </article>
+
 {% endblock %}

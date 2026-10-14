@@ -1102,7 +1102,39 @@
     }
   },
   "blog": {
-    "page_title": "Blog",
-    "page_subtitle": "Build logs, debugging stories, and things I wish someone told me earlier. I write these because the gap between 'I want to build that' and 'I actually built that' is filled with mistakes most people never talk about."
+    "page_title": "Build Log",
+    "page_subtitle": "Build logs, debugging stories, and things I wish someone told me earlier. I write these because the gap between 'I want to build that' and 'I actually built that' is filled with mistakes most people never talk about.",
+    "index_kicker": "ENGINEERING NOTES",
+    "index_intro": [
+      "This is where I keep the build notes — the plans that broke, the fixes that worked, and the things I had to unlearn. Newest first. The fixes stay in the notes on purpose: most build stories stop at the result, and the interesting part is whatever was wrong with the first idea."
+    ],
+    "read_label": "Read the build log →",
+    "articles": {
+      "capture-first-compress-later": {
+        "project": "AERO-LITE",
+        "category": "Design decisions",
+        "case_study": "/projects/aero-lite/"
+      },
+      "i2c-debugging-hell": {
+        "project": "AERO-LITE",
+        "category": "Debugging",
+        "case_study": "/projects/aero-lite/"
+      },
+      "nasa-challenge-submission": {
+        "project": "AERO-LITE",
+        "category": "Telling the story",
+        "case_study": "/projects/aero-lite/"
+      },
+      "lego-grabber-to-robotic-arm": {
+        "project": "Ashtavakra",
+        "category": "Where it started",
+        "case_study": "/projects/ashtavakra/"
+      },
+      "robotic-arm-engineering-problems": {
+        "project": "Ashtavakra",
+        "category": "Engineering method",
+        "case_study": "/projects/ashtavakra/"
+      }
+    }
   }
 }

@@ -697,7 +697,16 @@ h1, h2, h3 { text-wrap: balance; }
 .timeline-intro h2 { max-width: 8.5ch; font-weight: 600; line-height: .96; letter-spacing: -.035em; }
 .timeline-intro p { margin: 0 0 4px; color: var(--muted); font-size: 1rem; }
 .journey-link { display: inline-block; margin-top: 10px; }
-.timeline { position: relative; padding-left: 40px; }
+.timeline {
+  position: relative;
+  padding-left: 40px;
+  /* Single positioning reference: the solid connector, every milestone
+     circle and the active halo derive from --tl-axis (horizontal center of
+     the timeline line, measured from the .timeline left edge) and
+     --tl-item-pad (the item's left padding). No independent magic offsets. */
+  --tl-axis: 4px;
+  --tl-item-pad: 28px;
+}
 .timeline-item { position: relative; padding: 0 0 48px 40px; }
 .timeline-item:last-child { padding-bottom: 0; }
 .timeline-item::before {
@@ -731,21 +740,18 @@ h1, h2, h3 { text-wrap: balance; }
 .timeline-track {
   position: absolute;
   z-index: 0;
-  left: -40px;
+  left: calc(var(--tl-axis) - var(--tl-item-pad) - 0.75px);
   top: 12px;
   bottom: -12px;
   width: 0;
   border-left: 1.5px solid var(--accent);
   pointer-events: none;
 }
-.timeline-item.progress .timeline-track {
-  border-left: 1px dashed color-mix(in srgb, var(--accent) 34%, transparent);
-}
 .timeline-item.progress::after {
   content: "";
   position: absolute;
   z-index: 1;
-  left: -52px;
+  left: calc(var(--tl-axis) - var(--tl-item-pad) - 13px);
   top: 1px;
   width: 24px;
   height: 24px;
@@ -1095,9 +1101,9 @@ html.js .reveal.visible { opacity: 1; transform: none; }
   .article-side { align-items: flex-start; gap: 14px; }
   .timeline { padding-left: 20px; }
   .timeline-item { padding-left: 20px; }
-  .timeline-item::before { left: -20px; }
-  .timeline-track { left: -20px; }
-  .timeline-item.progress::after { left: -32px; }
+  .timeline-item::before { left: calc(var(--tl-axis) - var(--tl-item-pad)); transform: translateX(-50%); }
+  .timeline-track { left: calc(var(--tl-axis) - var(--tl-item-pad) - 0.75px); }
+  .timeline-item.progress::after { left: calc(var(--tl-axis) - var(--tl-item-pad) - 13px); }
   .timeline-intro h2 { font-size: clamp(2.2rem, 11.5vw, 3.2rem); }
   .tool-group > p { max-width: 42ch; }
   .how-more { padding-bottom: 12px; }
@@ -1263,13 +1269,12 @@ html.js .reveal.visible { opacity: 1; transform: none; }
 }
 .blog-read-link { color: var(--accent); font-size: 1rem; }
 
-/* Legacy journey timeline (about.html) */
-.journey-intro { max-width: 62ch; margin-bottom: 40px; }
-.journey-intro b { color: var(--accent); }
-.timeline { padding-left: 28px; position: relative; }
-.timeline::before { content: ""; position: absolute; left: 3px; top: 6px; bottom: 0; border-left: 1px dashed var(--line-strong); }
-.timeline .timeline-item { position: relative; padding: 0 0 44px 28px; }
-.timeline .timeline-item::before { content: ""; position: absolute; left: -29px; top: 6px; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--accent) 62%, var(--line)); background: var(--bg); box-sizing: border-box; transform: none; }
+/* Legacy journey timeline (about.html); also inherited by the homepage
+   timeline — axis values come from the shared --tl-axis / --tl-item-pad
+   custom properties defined on the base .timeline rule above. */
+.timeline { padding-left: var(--tl-item-pad); position: relative; }
+.timeline .timeline-item { position: relative; padding: 0 0 44px var(--tl-item-pad); }
+.timeline .timeline-item::before { content: ""; position: absolute; left: calc(var(--tl-axis) - var(--tl-item-pad)); top: 6px; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--accent) 62%, var(--line)); background: var(--bg); box-sizing: border-box; transform: translateX(-50%); }
 .timeline .timeline-item.highlight::before { background: var(--accent); border-color: var(--accent); }
 .timeline .timeline-item.future::before { border-style: dashed; background: var(--bg); }
 .timeline .timeline-item .timeline-marker {
@@ -2240,4 +2245,235 @@ html[data-theme="light"] .case-project .cs-orbit { opacity: .08; }
   .jrny-item { padding-left: 0; }
   .jrny-marker .jrny-year { font-size: .74rem; }
   .jrny-copy h2 { font-size: clamp(1.5rem, 6.4vw, 1.9rem); }
+}
+
+/* ==========================================================================
+   20. BUILD LOG (blg-*, used only by blog.html and article pages)
+   Editorial reading index + long-form article journal. No animations,
+   no JS-dependent visibility. All Markdown styling lives on .blg-post-body.
+   ========================================================================== */
+
+.blg-intro {
+  max-width: 62ch;
+  margin-top: 18px;
+}
+.blg-intro p {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: .98rem;
+  line-height: 1.65;
+}
+
+.blg-section { padding-top: 8px; }
+
+.blg-row {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: clamp(20px, 3.5vw, 48px);
+  padding: clamp(28px, 4vw, 44px) 0;
+}
+.blg-row + .blg-row { border-top: 1px solid var(--line); }
+
+.blg-row-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  font-family: var(--mono);
+}
+.blg-date { font-size: .76rem; font-weight: 600; color: var(--muted); letter-spacing: .03em; }
+.blg-project { font-size: .66rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.blg-cat { font-size: .64rem; letter-spacing: .05em; color: var(--faint); text-transform: uppercase; }
+
+.blg-row-body h2 {
+  margin: 0 0 10px;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+}
+.blg-excerpt {
+  margin: 0 0 16px;
+  max-width: 64ch;
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.62;
+}
+.blg-row-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+.blg-tag {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .04em;
+}
+
+/* ── Article reading experience ─────────────────────────────────────── */
+.blg-article {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(36px, 5vw, 64px) 0;
+}
+
+.blg-post-header { margin-bottom: clamp(28px, 4vw, 44px); }
+.blg-post-label {
+  display: inline-block;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.blg-post-header h1 {
+  margin: 12px 0 14px;
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -.02em;
+}
+.blg-post-date {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 0 18px;
+  font-family: var(--mono);
+  font-size: .74rem;
+  color: var(--muted);
+}
+.blg-post-summary {
+  margin: 0;
+  padding: 16px 0 0;
+  border-top: 1px dashed var(--line);
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.blg-post-body {
+  font-size: 1.02rem;
+  line-height: 1.78;
+  color: var(--text);
+}
+.blg-post-body p { margin: 0 0 20px; max-width: 68ch; color: var(--muted); }
+.blg-post-body p > strong,
+.blg-post-body li > strong { color: var(--text); font-weight: 600; }
+.blg-post-body h2 {
+  margin: 44px 0 16px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.015em;
+}
+.blg-post-body h2:first-child { border-top: 0; padding-top: 0; margin-top: 8px; }
+.blg-post-body h2 + h2 { border-top: 0; }
+.blg-post-body h3 {
+  margin: 30px 0 10px;
+  font-family: var(--mono);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--text);
+}
+.blg-post-body ul, .blg-post-body ol {
+  margin: 0 0 20px;
+  padding-left: 24px;
+  color: var(--muted);
+}
+.blg-post-body li { margin: 0 0 10px; max-width: 66ch; }
+.blg-post-body li::marker { color: var(--accent); font-family: var(--mono); font-size: .85em; }
+.blg-post-body a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent); text-underline-offset: 3px; }
+.blg-post-body a:hover, .blg-post-body a:focus-visible { text-decoration-color: var(--accent); }
+.blg-post-body blockquote {
+  margin: 0 0 20px;
+  padding: 2px 0 2px 20px;
+  border-left: 2px solid var(--accent);
+  color: var(--faint);
+}
+.blg-post-body blockquote p { margin: 0 0 8px; color: var(--faint); }
+.blg-post-body hr {
+  margin: 36px 0;
+  border: 0;
+  border-top: 1px dashed var(--line);
+}
+.blg-post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px 0;
+  border: 1px solid var(--line);
+}
+.blg-post-body code {
+  padding: 2px 6px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: .82em;
+  color: var(--text);
+}
+.blg-post-body pre {
+  margin: 0 0 24px;
+  padding: 16px 18px;
+  max-width: 100%;
+  overflow-x: auto;
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+}
+.blg-post-body pre code {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .84rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+.blg-post-body table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 24px;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+.blg-post-body th, .blg-post-body td {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--body);
+  text-align: left;
+}
+.blg-post-body th { color: var(--text); font-family: var(--mono); font-size: .74rem; letter-spacing: .04em; background: var(--surface); }
+
+.blg-post-foot {
+  display: grid;
+  gap: 14px;
+  margin-top: 44px;
+  padding: 26px 0 0;
+  border-top: 1px solid var(--line);
+}
+.blg-post-foot .text-link { justify-self: start; }
+.blg-post-case { color: var(--accent); }
+
+@media (max-width: 780px) {
+  .blg-row { grid-template-columns: 1fr; gap: 12px; }
+  .blg-row-meta { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .blg-article { padding-inline: clamp(20px, 6vw, 48px); }
+  .blg-post-body { font-size: .98rem; }
+  .blg-post-foot { gap: 12px; }
 }
