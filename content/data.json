@@ -607,6 +607,10 @@
             "target": "#decision"
           }
         },
+        "video": {
+          "src": "/assets/video/aero-lite-intro.mp4",
+          "poster": "/assets/images/aero-lite-poster.jpg"
+        },
         "evidence_band": [
           {
             "strong": "3 live CO₂ sensors",

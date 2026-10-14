@@ -1,5 +1,7 @@
 {% set cse = project.case %}
-<section class="cs-hero" id="case-hero">
+{% set vid = project.case.get("video", {}) %}
+{% set has_video = vid.get("src") %}
+<section class="cs-hero{% if has_video %} has-video{% endif %}" id="case-hero">
   <svg class="cs-orbit" viewBox="0 0 800 520" fill="none" aria-hidden="true">
     <g stroke="currentColor" stroke-width="1">
       <ellipse cx="480" cy="200" rx="330" ry="128" stroke-dasharray="7 10" opacity=".5"/>
@@ -10,6 +12,33 @@
       <circle cx="620" cy="300" r="4"/>
     </g>
   </svg>
+  <figure class="cs-hero-photo{% if has_video %} cs-hero-video{% endif %}"{% if has_video %} id="video-overview"{% endif %}>
+    {% if has_video %}
+    <video
+      controls
+      preload="metadata"
+      playsinline
+      poster="{{ vid.poster }}"
+    >
+      <source src="{{ vid.src }}" type="video/mp4" />
+      Your browser does not support embedded video. <a href="{{ vid.src }}">Watch the MP4 directly</a>.
+    </video>
+    {% elif cse.hero.get("photo") %}
+    <span class="cs-fig-label">{{ cse.hero.figure_label }}</span>
+    <img src="{{ cse.hero.photo }}" alt="{{ cse.hero.photo_alt }}" />
+    <figcaption class="cs-photo-caption">{{ cse.hero.photo_caption }}</figcaption>
+    {% elif cse.hero.get("placeholder") %}
+    <div class="cs-hold">
+      <svg viewBox="0 0 100 60" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+        <path d="M10 45 L30 18 L44 34 L56 20 L74 40" stroke-dasharray="4 4"/>
+        <circle cx="78" cy="14" r="5" stroke-dasharray="3 3"/>
+        <path d="M10 45 H90" stroke-dasharray="2 5" opacity=".6"/>
+      </svg>
+      <strong>{{ cse.hero.placeholder.title }}</strong>
+      <span>{{ cse.hero.placeholder.note }}</span>
+    </div>
+    {% endif %}
+  </figure>
   <div class="cs-hero-copy">
     <span class="cs-kicker">{{ cse.hero.kicker }}</span>
     <h1>{{ cse.hero.headline }}</h1>
@@ -30,23 +59,6 @@
       {% endif %}
     </div>
   </div>
-  <figure class="cs-hero-photo">
-    {% if cse.hero.get("photo") %}
-    <span class="cs-fig-label">{{ cse.hero.figure_label }}</span>
-    <img src="{{ cse.hero.photo }}" alt="{{ cse.hero.photo_alt }}" />
-    <figcaption class="cs-photo-caption">{{ cse.hero.photo_caption }}</figcaption>
-    {% elif cse.hero.get("placeholder") %}
-    <div class="cs-hold">
-      <svg viewBox="0 0 100 60" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-        <path d="M10 45 L30 18 L44 34 L56 20 L74 40" stroke-dasharray="4 4"/>
-        <circle cx="78" cy="14" r="5" stroke-dasharray="3 3"/>
-        <path d="M10 45 H90" stroke-dasharray="2 5" opacity=".6"/>
-      </svg>
-      <strong>{{ cse.hero.placeholder.title }}</strong>
-      <span>{{ cse.hero.placeholder.note }}</span>
-    </div>
-    {% endif %}
-  </figure>
 </section>
 
 <div class="cs-band" id="case-evidence-band">
