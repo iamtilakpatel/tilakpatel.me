@@ -128,7 +128,7 @@
         "links": [
           {
             "label": "Explore the Build Story →",
-            "url": "projects/aero-lite"
+            "url": "/projects/aero-lite/"
           },
           {
             "label": "GitHub ↗",
@@ -160,7 +160,7 @@
         "links": [
           {
             "label": "Explore the Build Story →",
-            "url": "projects/ashtavakra"
+            "url": "/projects/ashtavakra/"
           },
           {
             "label": "GitHub ↗",
@@ -484,7 +484,7 @@
         "image": "/assets/images/aero-prototype.jpg",
         "image_alt": "AERO-LITE Phase 1 prototype — three mason jars with zeolite beads, silica gel, and CO₂ sensors on a desk",
         "links": [
-          { "label": "Explore the project →", "url": "projects/aero-lite", "style": "text-link" },
+          { "label": "Explore the project →", "url": "/projects/aero-lite/", "style": "text-link" },
           { "label": "Firmware + documentation ↗", "url": "https://github.com/iamtilakpatel/aero-lite", "style": "button" }
         ]
       },
@@ -733,8 +733,8 @@
               "text": "— unmeasured"
             }
           ],
-          "missing_asset_label": "MISSING ASSET",
-          "missing_asset_text": "Dashboard screenshot (live UI frame). Not yet captured; deliberately shown as an explicit placeholder rather than fabricated — replaced here when a real screen capture exists.",
+          "missing_asset_label": "LIVE DASHBOARD",
+          "missing_asset_text": "The CO₂ dashboard is real, not a mockup — a web UI served by the ESP32-S3 that updates every second. The readings shown under OBSERVED above were captured from it as live sensor output; this page describes it through those readings and the bench photograph rather than a stylized UI frame.",
           "pull_quote": "This is not a rendering. It is three mason jars on my desk, a live ESP32-S3, and a web dashboard that updates every second."
         },
         "lessons": {
@@ -800,7 +800,7 @@
         "placeholder_title": "REAL BENCH PHOTO TO ADD",
         "placeholder_note": "The final site should use a real photograph of the working arm on the bench.",
         "links": [
-          { "label": "Explore the project →", "url": "projects/ashtavakra", "style": "text-link" },
+          { "label": "Explore the project →", "url": "/projects/ashtavakra/", "style": "text-link" },
           { "label": "GitHub ↗", "url": "https://github.com/iamtilakpatel/ashtavakra", "style": "button" }
         ]
       },
